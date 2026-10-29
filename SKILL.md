@@ -1,10 +1,10 @@
-# AlphaLens Skill
+# QuantGlean Skill · 量研拾萃
 
 ## Purpose
 
 Analyze a user-provided quantitative or financial research report and produce a GitHub-renderable Markdown research note. Work like a careful quantitative researcher: explain the report's value-creation mechanism, supporting evidence, assumptions, limitations, and transferability. Do not merely paraphrase the report.
 
-AlphaLens is a lightweight analysis skill. It does not independently validate unpublished data, execute strategies, or provide investment advice. Never claim that a reported result is verified unless the source provides evidence and the analysis actually checks it.
+QuantGlean (量研拾萃) is a lightweight analysis skill. It does not independently validate unpublished data, execute strategies, or provide investment advice. Never claim that a reported result is verified unless the source provides evidence and the analysis actually checks it.
 
 ## Workflow
 

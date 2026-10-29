@@ -1,12 +1,12 @@
-# AlphaLens
+# QuantGlean · 量研拾萃
 
-> **A lightweight skill for mining alpha in quantitative research reports.**
+> **A lightweight skill for extracting alpha insights from quantitative research reports.**
 
 [简体中文](README_CN.md)
 
-![AlphaLens overview](assets/AlphaLens.png)
+![QuantGlean overview](assets/QuantGlean.png)
 
-AlphaLens helps turn a quantitative research report into a concise, structured, and reusable research note. It guides an analyst or AI assistant to identify what the report studies, understand how its approach creates value, and assess where that value may or may not hold.
+**QuantGlean** (量研拾萃) helps turn a quantitative research report into a concise, structured, and reusable research note. It guides an analyst or AI assistant to identify what the report studies, understand how its approach creates value, and assess where that value may or may not hold.
 
 It is a research skill and analysis workflow, not a trading system, an investment recommendation, or a promise of investment performance.
 
