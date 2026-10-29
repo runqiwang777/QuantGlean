@@ -4,6 +4,8 @@
 
 [简体中文](README_CN.md)
 
+![AlphaLens overview](assets/AlphaLens.png)
+
 AlphaLens helps turn a quantitative research report into a concise, structured, and reusable research note. It guides an analyst or AI assistant to identify what the report studies, understand how its approach creates value, and assess where that value may or may not hold.
 
 It is a research skill and analysis workflow, not a trading system, an investment recommendation, or a promise of investment performance.
