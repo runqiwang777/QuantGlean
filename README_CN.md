@@ -63,12 +63,41 @@ Skill 会将报告路由到最相关的分析视角：
 - [`SKILL.md`](SKILL.md)：英文分析指令
 - [`SKILL_CN.md`](SKILL_CN.md)：简体中文分析指令
 - [`README_CN.md`](README_CN.md)：简体中文项目说明
+- [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README_CN.md)：完整研究笔记、证据定位、分析点评与已填写的假设卡片（[English](examples/aqr-century-trend-following/README.md)）
+- [`templates/alpha-hypothesis_CN.md`](templates/alpha-hypothesis_CN.md)：可复用的 Alpha 假设卡片（[English](templates/alpha-hypothesis.md)）
 
 ## 使用方法
 
-向 skill 提供一篇研究报告，并要求它依照 `SKILL.md` 或 `SKILL_CN.md` 中的流程和输出结构进行分析。保存笔记时保留原文链接、报告日期及必要的来源信息，方便读者追溯证据。
+### 五分钟上手
 
-本仓库维护 skill 及其文档；使用 skill 生成的研究笔记可以单独管理。
+1. 打开支持文档阅读的 AI 助手，附上 [`SKILL_CN.md`](SKILL_CN.md) 和研报 PDF 或全文。如需输出假设卡片，同时附上[卡片模板](templates/alpha-hypothesis_CN.md)。
+2. 复制下面的指令，替换方括号内容。英文笔记可选 `English` 并使用 [`SKILL.md`](SKILL.md)。
+3. 将返回的 Markdown 保存为研究笔记。复用前，对照引用页码核对关键主张。这套文档流程本身不会执行回测。
+
+```text
+请按照附上的 QuantGlean skill 分析我提供的报告。
+报告：[标题、作者/机构、日期/版本、原文链接]
+输出语言：[简体中文 / English]
+深度：先给简短快速阅读，再展开详细分析。
+关注点：[你的研究问题，或请识别核心贡献]
+
+选择一个主研究类型，必要时最多叠加一个辅助类型。
+关键主张请注明所提供原文的 PDF 页、章节或图表，并说明页码口径。
+区分作者主张、分析者推断和尚未验证的假设；缺失证据标为未知。
+若无法访问原文或材料不完整，请说明缺口并请求补充文档，
+不要根据标题或摘要推测报告全文。
+
+若报告支持可检验的想法，结尾按附上的模板生成一张候选 Alpha 假设卡片。
+明确标出分析者新增的扩展；若没有足够依据，请说明原因，不要强行生成。
+未执行的验证标为“未运行”，不得声称已独立复现。
+请输出可由 GitHub 渲染的 Markdown，保留来源信息和可执行的下一步。
+```
+
+### 查看完整案例
+
+可先阅读 [AQR 趋势跟踪案例](examples/aqr-century-trend-following/README_CN.md)，其中包含原文版本、输入指令、快速阅读、详细解读、证据定位、已填写的假设卡片和分析点评。这是经过编写与核对的示例；不同助手与原文访问条件下，输出可能不同。
+
+本仓库维护 skill、模板和一个完整案例；你自己的研究笔记合集可以单独管理。
 
 ## 免责声明
 

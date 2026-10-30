@@ -63,12 +63,43 @@ For each proposed mechanism, explain its logic, evidence, setting, and failure c
 - [`SKILL.md`](SKILL.md): English analysis instructions
 - [`SKILL_CN.md`](SKILL_CN.md): Simplified Chinese analysis instructions
 - [`README_CN.md`](README_CN.md): Simplified Chinese project overview
+- [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README.md): worked research note, source locators, analyst review, and a filled hypothesis card ([中文](examples/aqr-century-trend-following/README_CN.md))
+- [`templates/alpha-hypothesis.md`](templates/alpha-hypothesis.md): reusable Alpha Hypothesis Card ([中文](templates/alpha-hypothesis_CN.md))
 
 ## Use
 
-Provide the skill with a research report and ask it to analyze the report using the workflow and output structure in `SKILL.md` or `SKILL_CN.md`. Keep the resulting note with the source link, report date, and any relevant provenance so readers can trace the evidence.
+### Five-minute quick start
 
-This repository contains the skill and its documentation. Research notes generated with it can be maintained separately.
+1. Open an AI assistant that can read documents. Attach [`SKILL.md`](SKILL.md) and the report PDF or full text. If you want a hypothesis card, also attach the [card template](templates/alpha-hypothesis.md).
+2. Paste the prompt below, replacing the bracketed fields. For an English note, select `English`; use [`SKILL_CN.md`](SKILL_CN.md) for the Chinese workflow.
+3. Save the returned Markdown note. Check the key claims against the cited pages before reusing it. No backtest is performed by this documentation workflow.
+
+```text
+Use the attached QuantGlean skill to analyze the supplied report.
+Report: [title, authors/institution, date/version, source URL]
+Output language: [English / Simplified Chinese]
+Depth: detailed analysis after a short quick read.
+Focus: [your research question, or identify the core contribution]
+
+Choose one primary research type and at most one supporting type.
+For material claims, cite the supplied source's PDF page, section, or exhibit;
+state the page-number convention. Separate author claims, analyst inferences,
+and unverified hypotheses. Mark missing evidence as unknown.
+If the source is inaccessible or incomplete, state the gap and request the
+missing document; do not infer the report's content from its title or abstract.
+
+End with one candidate Alpha Hypothesis Card using the attached template
+if a testable idea is supported. Identify any analyst extension explicitly.
+If none is supported, explain why instead of inventing one.
+Mark unexecuted validation as Not run. Do not claim independent replication.
+Return GitHub-renderable Markdown with source details and actionable next steps.
+```
+
+### See a complete example
+
+Start with the [AQR trend-following case](examples/aqr-century-trend-following/README.md): it includes the source version, input prompt, quick read, detailed interpretation, evidence map, a filled hypothesis card, and reviewer notes. It is an authored demonstration; model outputs can vary with the assistant and source access.
+
+This repository contains the skill, templates, and a small worked example. Your own research-note collection can be maintained separately.
 
 ## Disclaimer
 
