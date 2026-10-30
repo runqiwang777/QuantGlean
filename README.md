@@ -4,6 +4,8 @@
 
 [简体中文](README_CN.md)
 
+[**Try the interactive demo ↗**](https://runqiwang777.github.io/QuantGlean/) — bilingual walkthrough, evidence links, and Markdown export from the reviewed example.
+
 ![QuantGlean overview](assets/QuantGlean.png)
 
 **QuantGlean** (量研拾萃) helps turn a quantitative research report into a concise, structured, and reusable research note. It guides an analyst or AI assistant to identify what the report studies, understand how its approach creates value, and assess where that value may or may not hold.

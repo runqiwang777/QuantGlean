@@ -4,6 +4,8 @@
 
 [English README](README.md)
 
+[**体验在线 Demo ↗**](https://runqiwang777.github.io/QuantGlean/) —— 中英文交互案例、证据定位与 Markdown 导出，基于已核对的示例内容。
+
 ![QuantGlean 项目示意图](assets/QuantGlean.png)
 
 **量研拾萃（QuantGlean）** 帮助研究者或 AI 助手把量化研究报告整理为简洁、结构化、可复用的研究笔记。它引导分析者识别报告研究什么问题、方法如何创造价值，以及这些价值可能成立或失效的条件。
