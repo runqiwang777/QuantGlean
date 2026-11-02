@@ -1,6 +1,6 @@
 # Alpha Hypothesis Card
 
-[简体中文](alpha-hypothesis_CN.md) · [Worked example](../examples/aqr-century-trend-following/README.md)
+[English](alpha-hypothesis.md) · [简体中文](alpha-hypothesis_CN.md) · [日本語](alpha-hypothesis_JA.md) · [한국어](alpha-hypothesis_KO.md) · [Worked example](../examples/aqr-century-trend-following/README.md)
 
 Copy this card for one testable idea. Fill unknown fields with `Unknown`; do not infer that an unreported check passed. For process or infrastructure ideas, replace return metrics with measurable research outcomes such as error rate, time, or cost.
 

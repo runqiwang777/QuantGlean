@@ -1,5 +1,7 @@
 # 量研拾萃 · QuantGlean Skill（中文）
 
+[English](SKILL.md) · [简体中文](SKILL_CN.md) · [日本語](SKILL_JA.md) · [한국어](SKILL_KO.md)
+
 ## 目标
 
 以审慎的量化研究员视角分析用户提供的量化或金融研究报告，并生成可在 GitHub 渲染的 Markdown 研究笔记。重点解释报告的价值创造机制、支撑证据、假设、局限与可迁移性，而不是简单改写原文。

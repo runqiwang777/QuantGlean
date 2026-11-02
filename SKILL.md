@@ -1,5 +1,7 @@
 # QuantGlean Skill · 量研拾萃
 
+[English](SKILL.md) · [简体中文](SKILL_CN.md) · [日本語](SKILL_JA.md) · [한국어](SKILL_KO.md)
+
 ## Purpose
 
 Analyze a user-provided quantitative or financial research report and produce a GitHub-renderable Markdown research note. Work like a careful quantitative researcher: explain the report's value-creation mechanism, supporting evidence, assumptions, limitations, and transferability. Do not merely paraphrase the report.

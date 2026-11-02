@@ -2,9 +2,9 @@
 
 > **一款用于从量化研究报告中挖掘 Alpha 的轻量级 skill。**
 
-[English README](README.md)
+[English](README.md) · [简体中文](README_CN.md) · [日本語](README_JA.md) · [한국어](README_KO.md)
 
-[**体验在线 Demo ↗**](https://runqiwang777.github.io/QuantGlean/) —— 中英文交互案例、证据定位与 Markdown 导出，基于已核对的示例内容。
+[**体验在线 Demo ↗**](https://runqiwang777.github.io/QuantGlean/) —— 中英日韩四语交互案例、证据定位与 Markdown 导出，基于已核对的示例内容。
 
 ![QuantGlean 项目示意图](assets/QuantGlean.png)
 
@@ -68,6 +68,9 @@ Skill 会将报告路由到最相关的分析视角：
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README_CN.md)：完整研究笔记、证据定位、分析点评与已填写的假设卡片（[English](examples/aqr-century-trend-following/README.md)）
 - [`templates/alpha-hypothesis_CN.md`](templates/alpha-hypothesis_CN.md)：可复用的 Alpha 假设卡片（[English](templates/alpha-hypothesis.md)）
 
+- [日本語 README](README_JA.md) · [日本語 Skill](SKILL_JA.md)
+- [한국어 README](README_KO.md) · [한국어 Skill](SKILL_KO.md)
+
 ## 使用方法
 
 ### 五分钟上手
@@ -79,7 +82,7 @@ Skill 会将报告路由到最相关的分析视角：
 ```text
 请按照附上的 QuantGlean skill 分析我提供的报告。
 报告：[标题、作者/机构、日期/版本、原文链接]
-输出语言：[简体中文 / English]
+输出语言：[简体中文 / English / 日本語 / 한국어]
 深度：先给简短快速阅读，再展开详细分析。
 关注点：[你的研究问题，或请识别核心贡献]
 

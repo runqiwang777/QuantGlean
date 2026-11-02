@@ -1,6 +1,6 @@
 # Alpha 假设卡片
 
-[English](alpha-hypothesis.md) · [填写示例](../examples/aqr-century-trend-following/README_CN.md)
+[English](alpha-hypothesis.md) · [简体中文](alpha-hypothesis_CN.md) · [日本語](alpha-hypothesis_JA.md) · [한국어](alpha-hypothesis_KO.md) · [填写示例](../examples/aqr-century-trend-following/README_CN.md)
 
 每张卡片只记录一个可检验的想法。未知项填“未知”，不得把未报告的检查视为通过。研究流程或基础设施类想法，可将收益指标替换为错误率、耗时或成本等可测量结果。
 

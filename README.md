@@ -2,9 +2,9 @@
 
 > **A lightweight skill for extracting alpha insights from quantitative research reports.**
 
-[简体中文](README_CN.md)
+[English](README.md) · [简体中文](README_CN.md) · [日本語](README_JA.md) · [한국어](README_KO.md)
 
-[**Try the interactive demo ↗**](https://runqiwang777.github.io/QuantGlean/) — bilingual walkthrough, evidence links, and Markdown export from the reviewed example.
+[**Try the interactive demo ↗**](https://runqiwang777.github.io/QuantGlean/) — four-language walkthrough, evidence links, and Markdown export from the reviewed example.
 
 ![QuantGlean overview](assets/QuantGlean.png)
 
@@ -68,6 +68,9 @@ For each proposed mechanism, explain its logic, evidence, setting, and failure c
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README.md): worked research note, source locators, analyst review, and a filled hypothesis card ([中文](examples/aqr-century-trend-following/README_CN.md))
 - [`templates/alpha-hypothesis.md`](templates/alpha-hypothesis.md): reusable Alpha Hypothesis Card ([中文](templates/alpha-hypothesis_CN.md))
 
+- [Japanese README](README_JA.md) · [Japanese Skill](SKILL_JA.md)
+- [Korean README](README_KO.md) · [Korean Skill](SKILL_KO.md)
+
 ## Use
 
 ### Five-minute quick start
@@ -79,7 +82,7 @@ For each proposed mechanism, explain its logic, evidence, setting, and failure c
 ```text
 Use the attached QuantGlean skill to analyze the supplied report.
 Report: [title, authors/institution, date/version, source URL]
-Output language: [English / Simplified Chinese]
+Output language: [English / Simplified Chinese / Japanese / Korean]
 Depth: detailed analysis after a short quick read.
 Focus: [your research question, or identify the core contribution]
 
