@@ -1,0 +1,86 @@
+{
+  "run_id": "20261103T150823Z-2d976ada",
+  "status": "completed",
+  "conclusion": "untested_synthetic",
+  "started_at": "2026-11-03T15:08:23.694490+00:00",
+  "command": [
+    "qg",
+    "run",
+    "local-work\\frozen-model-v1.json",
+    "--data-manifest",
+    "..\\examples\\reproduction\\qg_model_001\\data_manifest.json",
+    "--output",
+    "local-work\\runs",
+    "--parquet"
+  ],
+  "code": {
+    "commit": "fbbd41439f1716e5c77b031a50880d0905b78e09",
+    "dirty": false,
+    "source_sha256": {
+      "quantglean/__init__.py": "ae832ea0b449dfebcedd43125082c64da94cda8bfea92a6b5761f76ac019a7f6",
+      "quantglean/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "quantglean/cli.py": "c050acb691648509afb909565db2f2d2801371aa5547f76acca4dfc4dc31cd16",
+      "quantglean/cross_sectional.py": "2b1c6a3a0eb3e32c74bebf10e9a3579c5b19ffaa2122e6094e40a1a3eccf7366",
+      "quantglean/data.py": "92aab2808f511e1684931cf51501d19f9abfa909e3933bc7a5828c93bf445ff0",
+      "quantglean/engine.py": "b42e59bf15b3f1e589e5aeb4d7aeaa36f7a090f44723fb173c419665f77b7051",
+      "quantglean/models.py": "4c7e1465646fb2feb9891700857c978c5121d87b9678087050296917ee43d9f8",
+      "quantglean/qlib_adapter.py": "20c6eeb86e79dcd3b9c65d3c50af534187fffd9f2075f73a2b140018c525fbae",
+      "quantglean/reporting.py": "061d91d7f1535b25e0af61eaa2b5fbcfc99f072e9f9b3c70a22c5db5df6210f1",
+      "quantglean/runs.py": "86b3313376196d72cada60216805ee8099f048ef112d0e0c86dc8ec83cb6dbba",
+      "quantglean/specs.py": "b58081eeae7eec5d8fe1d25bbaf922f62552d2f9da6be5e76acae5652282befc"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "quantglean": "0.3.0",
+      "numpy": "2.3.5",
+      "pandas": "2.3.3",
+      "PyYAML": "6.0.3",
+      "pyarrow": "23.0.1",
+      "quantstats": "0.0.81",
+      "pyqlib": "0.9.7",
+      "scikit-learn": "1.9.1"
+    }
+  },
+  "artifacts": {
+    "checks.json": "779a6cf8b9582db49e0371337ca23ad61428543ba1a065e573ba9b71ac885295",
+    "data_manifest.json": "bffe7393b334805ecd876ed22208e492d6b5b3ac11f0235dfe2503dbb255f81b",
+    "diagnostics.csv": "ad518c40025475a548a744a1cda5b345cd3a9f177d8aff6d6ee7a3ffbb863a98",
+    "diagnostics.parquet": "9a6a59f64c516a633fc1421fbdf7674061c50fa5421829035feeeefa962fde9b",
+    "features.csv": "08a6a7499c71db5b680ae673bd9746cb21c2aca590e1782832fed2ffac056d69",
+    "features.parquet": "9b62175afbc905aba9f90ac4e994ea0ddf22a15a901be8d5cf1b1a50fbac5e08",
+    "frozen_spec.json": "0f8eb7fb16cbe9b326c2dff627407e1fb7d9b601d9f4c272e7d09aa384027dff",
+    "implementation_differences.md": "28e8dcb3654cdc9fe115a496e76a3e8f1c979a6024c3f60ae95b8e86ce0031c9",
+    "metrics.json": "7f1f9b94d8bb6ce38230e655de9e5e430cf482aafb313e544e98c5480be44ee1",
+    "model.json": "ee7f02b949dc492eec095c367c1cb4023b92f75bf3be5ad685f476f6efee5350",
+    "positions.csv": "25d6760e1f0482fe857316cbc478c4cbff6eeb9274558174665a2a5bdff63e21",
+    "positions.parquet": "82681d41a6da568211309dee94c08dde853ee9dc897a2f9fb13e3340724e8f3c",
+    "prediction_diagnostics.csv": "1c3479aa683cb44394276a7e6c4376e4d5d726e1daa62a265770a266c28875a1",
+    "prediction_diagnostics.parquet": "364a8682f6e3555e3be3c4be58db5dd0fe1dd7f1bd671c7ab9108d2715d7c7e0",
+    "predictions.csv": "6d59e9bc9cee60f1aae0458dfd0c800acc14fe5db8229e2404f64f1fbbabd9e3",
+    "predictions.parquet": "a216342f1739703166f9e5b698d27a2e667ce0eaa81b17881ea5c83d914021d8",
+    "quantiles.csv": "2119c90e9af8c8eb5ff9c950c4479962ce379c0c0a71ff27bfc0ba069b0278c2",
+    "quantiles.parquet": "7d8722a7236c99b066f4c7a09465990020e31a3ce63b364777d775caf8381dc7",
+    "report.html": "ce72e36166390609895b7c14b90eba50eb741510d9f427d140681e62a27da5a2",
+    "report.md": "27ab411f72eb78e0bb397d8f0663353b6788d365d71b1308849cb6b596730a14",
+    "returns.csv": "0dc02d70365a913c5bc79e8fd8ec2b686d2fab04d9d1313305cfd20a04ebf7cb",
+    "returns.parquet": "89547ddc1bdd266744d3c0bf2533582092a58cdfbc521d85ceb772ca8b95f830",
+    "run.log": "9238efa5cd8e9f2333dce47a0e9554657b5995249887f8564a0b7bff68336b6d",
+    "signals.csv": "9dd549187ae548c5b9623fc69df1950a0aeb9c902ffee6c6cc39d5375b2dd922",
+    "signals.parquet": "0fb397aa2a389113e3f0af4a115f61c0209111f49ee5eaceb5d0f6301a90a854"
+  },
+  "spec_hash": "1eeb94b52444e5fe9443fdb0d1212fc41768b678b522ebee7e04a31bf45a09b2",
+  "reproduction_level": "pipeline_demo",
+  "seed": 11,
+  "data_summary": {
+    "observations": 4800,
+    "months": 240,
+    "instruments": 20
+  },
+  "data_sha256": "8e0a87d2cd65b101c3e4f18b1a6c092435863560723e4bf8e45b5bb01e5bdfcd",
+  "data_manifest_sha256": "ec2c6346810e361c1dfb27fa4eb8f4e36f478cbc7c6ccd250e1d5815b66f10f1",
+  "finished_at": "2026-11-03T15:08:25.918962+00:00",
+  "report_generated_at": "2026-11-03T15:08:25.918962+00:00"
+}
