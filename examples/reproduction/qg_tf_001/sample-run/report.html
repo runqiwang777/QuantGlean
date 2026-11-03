@@ -1,0 +1,252 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QuantGlean experiment report</title><style>body{max-width:1000px;margin:3rem auto;padding:0 1rem;font:16px/1.6 system-ui;color:#153d36;background:#fafbf9}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><main><pre># QuantGlean reproduction report
+
+- Run: 20261103T115029Z-72c32e7e
+- Status: completed
+- Level: pipeline_demo
+- Conclusion: untested_synthetic
+- Spec SHA256: f2dd249d5d98d459382dfbb9726e1aad4ee6cf01d318a6c8501298a33fc7b031
+- Dataset SHA256: c92b38cdc0180258b1b32dc05eb4dc6385867a95569e4000705774bf520344e9
+- Started (UTC): 2026-11-03T11:50:29.428092+00:00
+- Code: {&#x27;commit&#x27;: &#x27;abb00055a7cd041aeae02fffdaf402aeb941b6e9&#x27;, &#x27;dirty&#x27;: False, &#x27;source_sha256&#x27;: {&#x27;quantglean/__init__.py&#x27;: &#x27;76d0319c60d765d2523052d098b89580daa64a4539b49b8b3a27f04f4e50cdab&#x27;, &#x27;quantglean/__main__.py&#x27;: &#x27;935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d&#x27;, &#x27;quantglean/cli.py&#x27;: &#x27;7d3644b3b21519f6d867fe1f6e72bc45c6fabbe9f492f671009faf31d30ac4cd&#x27;, &#x27;quantglean/data.py&#x27;: &#x27;f59a16988abc1d2265827f911edc46b6cf57b66b70109d4984cb9d3a182f586d&#x27;, &#x27;quantglean/engine.py&#x27;: &#x27;6425e2ae0b9e8125186c397e525c3389e0d7d3b14dadcc235d8cf9de34e096c9&#x27;, &#x27;quantglean/reporting.py&#x27;: &#x27;ceedb2d907608b39322b43c743f64764077cf267dcdf3cbef4cf431dc8897435&#x27;, &#x27;quantglean/runs.py&#x27;: &#x27;fd77ac2dff375c8f2762d9f5344827dff3342d53b8c22b78c1485099170729b8&#x27;, &#x27;quantglean/specs.py&#x27;: &#x27;4d5957ced9bb43c19fa6910b32d0f96c173c8814d8296faf03bfa6e7d5fe77a7&#x27;}}
+
+Monthly constant-notional excess-return research accounting. Not a trade/fill simulator. Synthetic data tests the pipeline only. This implementation does not reproduce the original paper&#x27;s historical results. QuantStats period statistics are not executed-trade statistics.
+
+## Research source and protocol
+
+Source record: https://github.com/runqiwang777/QuantGlean/blob/main/examples/aqr-century-trend-following/SOURCE.md
+Report SHA256: 666f19c81a6932809fa69bb4f8746e531bb71912be7f554ce233eef73eb21d7c
+Evidence IDs: E2, E3, E6
+Evaluation: 2014-01-31 to 2023-12-31
+
+## Measured net excess-return results
+
+| Variant | Net Sharpe | Annual vol | Max drawdown | Mean turnover |
+| --- | ---: | ---: | ---: | ---: |
+| candidate | 0.483260 | 0.107643 | -0.305302 | 1.476738 |
+| baseline | 0.490626 | 0.098526 | -0.255249 | 0.537837 |
+| single_1 | 0.474913 | 0.090460 | -0.163488 | 1.871066 |
+| single_3 | 0.300378 | 0.097107 | -0.246998 | 1.013128 |
+
+Primary comparison (candidate minus fixed baseline): -0.007365707859156578
+Interval: [-0.4677392321900822, 0.47504787667440995]
+Conclusion: untested_synthetic
+
+Full metrics below include twice-cost stress with unchanged positions.
+
+## Recorded metrics
+
+Undefined statistics are null. Sharpe uses excess returns and annualization 12.
+Intervals are exploratory paired moving-block bootstrap estimates; they do not establish causality or remove selection bias.
+
+```json
+{
+  &quot;reproduction_level&quot;: &quot;pipeline_demo&quot;,
+  &quot;conclusion&quot;: &quot;untested_synthetic&quot;,
+  &quot;evaluation_start&quot;: &quot;2014-01-31&quot;,
+  &quot;evaluation_end&quot;: &quot;2023-12-31&quot;,
+  &quot;annualization&quot;: 12,
+  &quot;variants&quot;: {
+    &quot;candidate&quot;: {
+      &quot;observations&quot;: 120,
+      &quot;annualized_excess_geometric_growth&quot;: 0.047253399806897294,
+      &quot;annualized_volatility&quot;: 0.10764268754683987,
+      &quot;sharpe&quot;: 0.48325979748647063,
+      &quot;gross_sharpe&quot;: 0.6478563973498337,
+      &quot;gross_annualized_volatility&quot;: 0.10757731305524561,
+      &quot;gross_annualized_excess_geometric_growth&quot;: 0.06586019861177538,
+      &quot;max_drawdown&quot;: -0.3053016413274854,
+      &quot;average_turnover&quot;: 1.4767379176413655,
+      &quot;average_gross_leverage&quot;: 1.8381183109895403,
+      &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+      &quot;positive_compounded_wealth&quot;: true,
+      &quot;cost_sums&quot;: {
+        &quot;commission_cost&quot;: 0.017720855011696388,
+        &quot;spread_cost&quot;: 0.035441710023392775,
+        &quot;impact_cost&quot;: 0.017720855011696388,
+        &quot;financing_cost&quot;: 0.08381183109895403,
+        &quot;roll_cost&quot;: 0.022057419731874486,
+        &quot;total&quot;: 0.1767526708776141
+      }
+    },
+    &quot;baseline&quot;: {
+      &quot;observations&quot;: 120,
+      &quot;annualized_excess_geometric_growth&quot;: 0.044419061314517054,
+      &quot;annualized_volatility&quot;: 0.09852583909741705,
+      &quot;sharpe&quot;: 0.4906255053456272,
+      &quot;gross_sharpe&quot;: 0.6360517919292881,
+      &quot;gross_annualized_volatility&quot;: 0.09857038325322952,
+      &quot;gross_annualized_excess_geometric_growth&quot;: 0.05945941965154527,
+      &quot;max_drawdown&quot;: -0.25524918870378865,
+      &quot;average_turnover&quot;: 0.5378366574124936,
+      &quot;average_gross_leverage&quot;: 1.9441931559840324,
+      &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+      &quot;positive_compounded_wealth&quot;: true,
+      &quot;cost_sums&quot;: {
+        &quot;commission_cost&quot;: 0.006454039888949924,
+        &quot;spread_cost&quot;: 0.012908079777899848,
+        &quot;impact_cost&quot;: 0.006454039888949924,
+        &quot;financing_cost&quot;: 0.09441931559840323,
+        &quot;roll_cost&quot;: 0.023330317871808393,
+        &quot;total&quot;: 0.1435657930260113
+      }
+    },
+    &quot;single_1&quot;: {
+      &quot;observations&quot;: 120,
+      &quot;annualized_excess_geometric_growth&quot;: 0.039629062923110595,
+      &quot;annualized_volatility&quot;: 0.09045977157492469,
+      &quot;sharpe&quot;: 0.4749128354112448,
+      &quot;gross_sharpe&quot;: 0.7016182303942725,
+      &quot;gross_annualized_volatility&quot;: 0.09059438393517656,
+      &quot;gross_annualized_excess_geometric_growth&quot;: 0.06117497228513309,
+      &quot;max_drawdown&quot;: -0.1634884204136272,
+      &quot;average_turnover&quot;: 1.8710659612798688,
+      &quot;average_gross_leverage&quot;: 1.930450724715492,
+      &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+      &quot;positive_compounded_wealth&quot;: true,
+      &quot;cost_sums&quot;: {
+        &quot;commission_cost&quot;: 0.022452791535358424,
+        &quot;spread_cost&quot;: 0.04490558307071685,
+        &quot;impact_cost&quot;: 0.022452791535358424,
+        &quot;financing_cost&quot;: 0.0930450724715492,
+        &quot;roll_cost&quot;: 0.023165408696585905,
+        &quot;total&quot;: 0.20602164730956882
+      }
+    },
+    &quot;single_3&quot;: {
+      &quot;observations&quot;: 120,
+      &quot;annualized_excess_geometric_growth&quot;: 0.02474952203671665,
+      &quot;annualized_volatility&quot;: 0.09710703871547488,
+      &quot;sharpe&quot;: 0.30037832721963853,
+      &quot;gross_sharpe&quot;: 0.4711288993596102,
+      &quot;gross_annualized_volatility&quot;: 0.09700008110428654,
+      &quot;gross_annualized_excess_geometric_growth&quot;: 0.04180100490455812,
+      &quot;max_drawdown&quot;: -0.24699790421596157,
+      &quot;average_turnover&quot;: 1.0131283521158148,
+      &quot;average_gross_leverage&quot;: 1.9346138846154028,
+      &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+      &quot;positive_compounded_wealth&quot;: true,
+      &quot;cost_sums&quot;: {
+        &quot;commission_cost&quot;: 0.012157540225389778,
+        &quot;spread_cost&quot;: 0.024315080450779555,
+        &quot;impact_cost&quot;: 0.012157540225389778,
+        &quot;financing_cost&quot;: 0.0934613884615403,
+        &quot;roll_cost&quot;: 0.023215366615384838,
+        &quot;total&quot;: 0.16530691597848424
+      }
+    }
+  },
+  &quot;comparison&quot;: {
+    &quot;metric&quot;: &quot;net_sharpe_difference&quot;,
+    &quot;difference&quot;: -0.007365707859156578,
+    &quot;ci_lower&quot;: -0.4677392321900822,
+    &quot;ci_upper&quot;: 0.47504787667440995,
+    &quot;confidence&quot;: 0.95,
+    &quot;bootstrap_samples&quot;: 200,
+    &quot;bootstrap_valid_samples&quot;: 200,
+    &quot;bootstrap_block_periods&quot;: 6,
+    &quot;bootstrap_method&quot;: &quot;paired moving blocks, sampled with replacement, truncated to evaluation length&quot;,
+    &quot;conclusion&quot;: &quot;untested_synthetic&quot;,
+    &quot;diagnostic_direction&quot;: &quot;inconclusive&quot;
+  },
+  &quot;cost_stress_2x&quot;: {
+    &quot;method&quot;: &quot;twice every declared cost component; fixed original signals, positions and gross returns&quot;,
+    &quot;variants&quot;: {
+      &quot;candidate&quot;: {
+        &quot;observations&quot;: 120,
+        &quot;annualized_excess_geometric_growth&quot;: 0.028943630285268248,
+        &quot;annualized_volatility&quot;: 0.10771800226203736,
+        &quot;sharpe&quot;: 0.3188335800498558,
+        &quot;gross_sharpe&quot;: 0.6478563973498337,
+        &quot;gross_annualized_volatility&quot;: 0.10757731305524561,
+        &quot;gross_annualized_excess_geometric_growth&quot;: 0.06586019861177538,
+        &quot;max_drawdown&quot;: -0.3391929651920481,
+        &quot;average_turnover&quot;: 1.4767379176413655,
+        &quot;average_gross_leverage&quot;: 1.8381183109895403,
+        &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+        &quot;positive_compounded_wealth&quot;: true,
+        &quot;cost_sums&quot;: {
+          &quot;commission_cost&quot;: 0.035441710023392775,
+          &quot;spread_cost&quot;: 0.07088342004678555,
+          &quot;impact_cost&quot;: 0.035441710023392775,
+          &quot;financing_cost&quot;: 0.16762366219790806,
+          &quot;roll_cost&quot;: 0.04411483946374897,
+          &quot;total&quot;: 0.3535053417552282
+        }
+      },
+      &quot;baseline&quot;: {
+        &quot;observations&quot;: 120,
+        &quot;annualized_excess_geometric_growth&quot;: 0.02957383822266059,
+        &quot;annualized_volatility&quot;: 0.09848952879424899,
+        &quot;sharpe&quot;: 0.3450388148892778,
+        &quot;gross_sharpe&quot;: 0.6360517919292881,
+        &quot;gross_annualized_volatility&quot;: 0.09857038325322952,
+        &quot;gross_annualized_excess_geometric_growth&quot;: 0.05945941965154527,
+        &quot;max_drawdown&quot;: -0.2839928673870834,
+        &quot;average_turnover&quot;: 0.5378366574124936,
+        &quot;average_gross_leverage&quot;: 1.9441931559840324,
+        &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+        &quot;positive_compounded_wealth&quot;: true,
+        &quot;cost_sums&quot;: {
+          &quot;commission_cost&quot;: 0.012908079777899848,
+          &quot;spread_cost&quot;: 0.025816159555799696,
+          &quot;impact_cost&quot;: 0.012908079777899848,
+          &quot;financing_cost&quot;: 0.18883863119680647,
+          &quot;roll_cost&quot;: 0.046660635743616785,
+          &quot;total&quot;: 0.2871315860520226
+        }
+      },
+      &quot;single_1&quot;: {
+        &quot;observations&quot;: 120,
+        &quot;annualized_excess_geometric_growth&quot;: 0.01848346479262398,
+        &quot;annualized_volatility&quot;: 0.09034004810413307,
+        &quot;sharpe&quot;: 0.24749092288031704,
+        &quot;gross_sharpe&quot;: 0.7016182303942725,
+        &quot;gross_annualized_volatility&quot;: 0.09059438393517656,
+        &quot;gross_annualized_excess_geometric_growth&quot;: 0.06117497228513309,
+        &quot;max_drawdown&quot;: -0.19000080921954055,
+        &quot;average_turnover&quot;: 1.8710659612798688,
+        &quot;average_gross_leverage&quot;: 1.930450724715492,
+        &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+        &quot;positive_compounded_wealth&quot;: true,
+        &quot;cost_sums&quot;: {
+          &quot;commission_cost&quot;: 0.04490558307071685,
+          &quot;spread_cost&quot;: 0.0898111661414337,
+          &quot;impact_cost&quot;: 0.04490558307071685,
+          &quot;financing_cost&quot;: 0.1860901449430984,
+          &quot;roll_cost&quot;: 0.04633081739317181,
+          &quot;total&quot;: 0.41204329461913763
+        }
+      },
+      &quot;single_3&quot;: {
+        &quot;observations&quot;: 120,
+        &quot;annualized_excess_geometric_growth&quot;: 0.007952762634062176,
+        &quot;annualized_volatility&quot;: 0.09722830987605521,
+        &quot;sharpe&quot;: 0.1299843458028786,
+        &quot;gross_sharpe&quot;: 0.4711288993596102,
+        &quot;gross_annualized_volatility&quot;: 0.09700008110428654,
+        &quot;gross_annualized_excess_geometric_growth&quot;: 0.04180100490455812,
+        &quot;max_drawdown&quot;: -0.2825543498986107,
+        &quot;average_turnover&quot;: 1.0131283521158148,
+        &quot;average_gross_leverage&quot;: 1.9346138846154028,
+        &quot;maximum_gross_leverage&quot;: 2.0000000000000004,
+        &quot;positive_compounded_wealth&quot;: true,
+        &quot;cost_sums&quot;: {
+          &quot;commission_cost&quot;: 0.024315080450779555,
+          &quot;spread_cost&quot;: 0.04863016090155911,
+          &quot;impact_cost&quot;: 0.024315080450779555,
+          &quot;financing_cost&quot;: 0.1869227769230806,
+          &quot;roll_cost&quot;: 0.046430733230769676,
+          &quot;total&quot;: 0.3306138319569685
+        }
+      }
+    }
+  },
+  &quot;interpretation&quot;: &quot;Synthetic results test the software pipeline only; bootstrap direction is not research evidence.&quot;
+}
+```
+
+## Audit trail
+
+See frozen_spec.json, data_manifest.json (when available), checks.json, implementation_differences.md, and artifact SHA256 values in run_manifest.json.
+The manifest records the actual environment and command; inspect code.dirty before treating a commit as exact code provenance.
+</pre></main></html>
