@@ -49,3 +49,8 @@
 - **下一步：** [一个具体行动]
 
 阅读原文可支持研究笔记；提出卡片意味着形成研究任务。两者都不等于已独立验证的可投资 Alpha。
+
+## 实验回链
+
+- **冻结规格／数据清单／实际运行记录:** [paths, fingerprints, status]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.2]

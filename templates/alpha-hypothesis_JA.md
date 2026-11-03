@@ -49,3 +49,8 @@
 - **次の作業：** [具体的な一つの行動]
 
 原文確認は研究ノートの根拠になります。提案カードは研究課題であり、独立検証済みの投資アルファを意味しません。[記入例は英語](../examples/aqr-century-trend-following/README.md)で参照できます。
+
+## 実験へのリンク
+
+- **固定仕様／データ明細／実行記録:** [paths, fingerprints, status]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.2]

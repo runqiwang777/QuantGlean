@@ -12,6 +12,17 @@
 
 它是一套研究 skill 与分析流程，不是交易系统、投资建议，也不承诺投资表现。
 
+## 从假设到复现实验（可选 Python 工作流）
+
+阅读 Skill 现已配套本地实验流程：冻结规格、校验数据清单，运行自行编写的 QG-TF-001 月频趋势参考实现，
+保存信号、仓位、成本、指标与报告。公开案例使用**原创合成数据**，等级与结论始终为
+**pipeline_demo / untested_synthetic（流程演示／尚未检验）**，不代表复现 AQR 论文的历史业绩。
+
+详见[复现指南](docs/reproduction.md)、[可运行案例](examples/reproduction/qg_tf_001/README.md)
+和[来源、依赖及数据权利说明](THIRD_PARTY_NOTICES.md)。
+QuantStats 为可选报告组件；模型／Infra 执行与 Qlib、RD-Agent 接入仍属后续计划。阅读 Skill 可继续独立使用，无需 Python。
+
+
 ## 工作流程
 
 1. **阅读报告并识别研究类型。** 不预设所有报告都是因子或策略研究。

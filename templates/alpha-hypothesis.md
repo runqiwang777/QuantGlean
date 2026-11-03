@@ -49,3 +49,8 @@ Copy this card for one testable idea. Fill unknown fields with `Unknown`; do not
 - **Next step:** [one concrete action]
 
 An inspected source supports a reading note. A proposed card is a research task. Neither establishes independently verified, investable alpha.
+
+## Experiment links
+
+- **Frozen spec / data manifest / run record:** [paths, fingerprints, status]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.2]

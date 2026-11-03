@@ -12,6 +12,19 @@
 
 It is a research skill and analysis workflow, not a trading system, an investment recommendation, or a promise of investment performance.
 
+## Reproduce a research hypothesis (optional Python workflow)
+
+The reading skill now has a companion local experiment workflow: freeze a specification, validate a data manifest,
+run the independently written QG-TF-001 monthly trend reference, and save signals, positions, costs, metrics and reports.
+The public example uses **original synthetic data** and is labeled **pipeline_demo / untested_synthetic**.
+It does not verify the AQR paper's historical performance.
+
+See the [reproduction guide](docs/reproduction.md), [runnable example](examples/reproduction/qg_tf_001/README.md),
+and [source/dependency rights notes](THIRD_PARTY_NOTICES.md).
+QuantStats is an optional report adapter. Model/infra execution and Qlib/RD-Agent integrations remain planned.
+The reading Skill remains usable without Python.
+
+
 ## Workflow
 
 1. **Read the report and identify its research type.** Do not assume every report is a factor or strategy paper.

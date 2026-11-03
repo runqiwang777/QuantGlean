@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "data_path": "synthetic.csv",
+  "sha256": "c92b38cdc0180258b1b32dc05eb4dc6385867a95569e4000705774bf520344e9",
+  "source": {
+    "kind": "synthetic",
+    "description": "Original deterministic QuantGlean generator; seed 20261103; fictional returns only"
+  },
+  "rights": {
+    "use_permitted": true,
+    "redistribution_permitted": true,
+    "description": "Original fictional fixture released under the repository MIT license"
+  },
+  "frequency": "monthly",
+  "returns_kind": "simple_excess",
+  "universe": {
+    "eligibility": "SYN_A/B/C/D fixed at inception; no real securities",
+    "survivorship": "Not applicable to fictional instruments"
+  },
+  "adjustments": "None; generated simple excess returns, not prices or futures contracts"
+}

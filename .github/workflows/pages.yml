@@ -2,7 +2,7 @@ name: Publish QuantGlean demo
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'scripts/build-demo.mjs', 'assets/QuantGlean.png', '.github/workflows/pages.yml']
+    paths: ['site/**', 'examples/reproduction/qg_tf_001/sample-run/**', 'scripts/build-demo.mjs', 'assets/QuantGlean.png', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
