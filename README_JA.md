@@ -21,7 +21,7 @@ AQR 論文の歴史的運用成績を再現したものではありません。
 
 [再現ガイド](docs/reproduction.md)、[実行例](examples/reproduction/qg_tf_001/README.md)、
 [出典・依存関係・データ権利](THIRD_PARTY_NOTICES.md)を参照してください。
-QuantStats は任意のレポート部品です。モデル／Infra 実行と Qlib・RD-Agent 連携は今後の計画です。
+QuantStats は任意のレポート部品です。横断面モメンタムと固定分割 Ridge が実行でき、Qlib バックエンドも選べます。Infra と RD-Agent 実行は今後の計画です。
 読解 Skill は Python なしで引き続き利用できます。
 
 
@@ -108,3 +108,7 @@ QuantStats は任意のレポート部品です。モデル／Infra 実行と Ql
 ## ライセンス
 
 MIT License。
+
+## 横断面ファクターと予測モデル
+
+[0.3 版ガイド](docs/panel-experiments.md)では IC／RankIC・分位診断付きの12-1か月モメンタムと、学習期間のみの変換・固定時間分割の Ridge モデルを追加しました。Qlib は整合性テスト付きの任意バックエンドです。公開例は合成パイプラインの実演です。

@@ -53,4 +53,4 @@
 ## 실험 연결
 
 - **고정 사양／데이터 명세／실행 기록:** [paths, fingerprints, status]
-- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.2]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.3]

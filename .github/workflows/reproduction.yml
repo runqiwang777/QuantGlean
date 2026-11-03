@@ -1,9 +1,9 @@
 name: Verify reproduction reference
 on:
   push:
-    paths: ['src/**', 'tests/**', 'pyproject.toml', 'examples/reproduction/**', 'scripts/make-synthetic-fixture.py', '.github/workflows/reproduction.yml']
+    paths: ['src/**', 'tests/**', 'pyproject.toml', 'examples/reproduction/**', 'scripts/make-synthetic-fixture.py', 'scripts/make-panel-fixture.py', '.github/workflows/reproduction.yml']
   pull_request:
-    paths: ['src/**', 'tests/**', 'pyproject.toml', 'examples/reproduction/**', 'scripts/make-synthetic-fixture.py', '.github/workflows/reproduction.yml']
+    paths: ['src/**', 'tests/**', 'pyproject.toml', 'examples/reproduction/**', 'scripts/make-synthetic-fixture.py', 'scripts/make-panel-fixture.py', '.github/workflows/reproduction.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -18,3 +18,16 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -e ".[dev,parquet]"
       - run: python -m pytest -q
+  qlib:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      MLFLOW_TRACKING_URI: file:///tmp/quantglean-mlruns
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e ".[dev,qlib]"
+      - run: python -m pytest -q tests/test_panel.py -k qlib

@@ -53,4 +53,4 @@
 ## 実験へのリンク
 
 - **固定仕様／データ明細／実行記録:** [paths, fingerprints, status]
-- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.2]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.3]

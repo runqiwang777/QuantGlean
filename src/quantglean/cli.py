@@ -43,8 +43,8 @@ def main(argv=None) -> int:
                 "# Implementation task\n\n"
                 f"Artifact type: {spec['artifact_type']}\n\n"
                 "Specify formula, point-in-time data, fixed baseline, split, costs, evidence and tests.\n"
-                "Only the reviewed time-series trend reference is executable in this release.\n"
-                "Model/infra specifications are design scaffolds, not executable adapters.\n",
+                "Reviewed runners: time-series trend, cross-sectional momentum, fixed-split ridge.\n"
+                "Other model families and infra execution remain design scaffolds.\n",
                 encoding="utf-8")
             print(root)
         elif args.action == "run":

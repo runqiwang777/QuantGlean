@@ -62,6 +62,9 @@ def load_dataset(manifest_path: str | Path) -> tuple[pd.DataFrame, dict]:
     else:
         raise ValidationError("Dataset must be a CSV or Parquet file")
     frame = validate_panel(frame)
+    if "eligible" in frame.columns or "eligibility_available_at" in frame.columns:
+        from .cross_sectional import validate_eligibility
+        frame = validate_eligibility(frame)
     frame.attrs.update(source_kind=source["kind"], data_sha256=fingerprint,
                        universe=deepcopy(universe), frequency="monthly", returns_kind="simple_excess")
     enriched = deepcopy(manifest)

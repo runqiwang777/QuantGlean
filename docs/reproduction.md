@@ -2,7 +2,7 @@
 
 QuantGlean 0.2 adds a local Python workflow alongside the independently usable reading skill.
 The first executable case is QG-TF-001: a monthly time-series trend reference implementation.
-Factor, model and infra specifications can be recorded; model/infra execution adapters remain future work.
+Version 0.3 also runs cross-sectional momentum and a fixed-split ridge model; see the [panel/model guide](panel-experiments.md). Infra execution remains future work.
 
 ## Install and run
 
@@ -45,7 +45,7 @@ A user-supplied historical dataset does not automatically qualify as an exact pa
 
 See [the complete example](../examples/reproduction/qg_tf_001/experiment.yaml).
 Required concepts include source/evidence references, formula choices, data fingerprint, costs, fixed baseline, evaluation bounds, primary metric, bootstrap design and seed.
-The core supports only factor/time_series and the built-in monthly trend reference. It does not import arbitrary entrypoints.
+This page describes factor/time_series and the built-in monthly trend reference; additional reviewed panel/model runners are documented separately. It does not import arbitrary entrypoints.
 
 Signals are signs of compounded 1/3/12-month simple excess returns.
 Candidate horizons share an equal-risk construction; the fixed baseline is 12 months, with 1/3-month diagnostic ablations.
@@ -103,7 +103,6 @@ It uses neither the original 137-year dataset nor its full contract/execution co
 The four-language [website](https://runqiwang777.github.io/QuantGlean/) displays an actual saved synthetic run, with downloadable records.
 GitHub Pages is static: it does not execute Python or accept uploaded private reports.
 
-Next: a point-in-time cross-sectional factor example and optional Qlib adapter;
-then a fixed-split model example; then measured infra benchmarks and experiment tracking;
+Available in 0.3: decision-time-eligible cross-sectional factor and fixed-split ridge examples, with an optional Qlib backend. Next: audited historical data, richer coverage contracts, measured infra benchmarks and experiment tracking;
 finally an optional budgeted RD-Agent adapter after the evidence/verification layer is stable.
 No upstream source is vendored. See [rights and dependency notes](../THIRD_PARTY_NOTICES.md).

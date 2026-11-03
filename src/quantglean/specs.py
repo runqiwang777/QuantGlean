@@ -124,6 +124,8 @@ def validate_spec(spec: dict) -> list[str]:
         for field in ("commission_bps", "spread_bps", "impact_bps", "financing_bps_annual", "roll_bps_per_period"):
             if not _number(costs.get(field)) or costs[field] < 0:
                 errors.append(f"implementation.costs.{field} must be finite and nonnegative")
+    if spec.get("analysis_type") in ("cross_sectional", "predictive"):
+        errors.extend(_panel_errors(spec, objects))
     choices = implementation.get("undocumented_choices")
     if not isinstance(choices, list) or not choices or any(not isinstance(x, str) or not x.strip() for x in choices):
         errors.append("implementation.undocumented_choices must list the reference implementation's own conventions")
@@ -189,3 +191,73 @@ def freeze_spec(spec: dict) -> dict:
     frozen["status"] = "spec_ready"
     frozen["spec_hash"] = canonical_hash(frozen)
     return frozen
+
+
+def _panel_errors(spec: dict, objects: dict) -> list[str]:
+    errors = []
+    impl, validation = objects["implementation"], objects["validation"]
+    model = spec.get("analysis_type") == "predictive"
+    if spec.get("artifact_type") != ("model" if model else "factor"):
+        errors.append("Panel analysis_type does not match artifact_type")
+    expected_entry = "qg_model_001_reference" if model else "qg_cs_001_reference"
+    if impl.get("entrypoint") != expected_entry:
+        errors.append("Unsupported panel entrypoint")
+    expected = {"lookback_periods": 12, "skip_periods": 1, "baseline_lookback_periods": 6,
+                "execution_lag_periods": 1, "rebalance": "monthly"}
+    for key, value in expected.items():
+        if impl.get(key) != value:
+            errors.append(f"implementation.{key} must be {value!r} for this reviewed reference")
+    if not _number(impl.get("quantiles"), integer=True) or not 3 <= impl["quantiles"] <= 10:
+        errors.append("implementation.quantiles must be an integer in [3, 10]")
+    if not _number(impl.get("gross_leverage")) or not 0 < impl["gross_leverage"] <= 2:
+        errors.append("implementation.gross_leverage must be in (0, 2]")
+    costs = impl.get("costs", {})
+    if not isinstance(costs, dict):
+        costs = {}
+    for key in ("commission_bps", "spread_bps", "impact_bps", "financing_bps_annual",
+                "roll_bps_per_period", "short_borrow_bps_annual"):
+        if not _number(costs.get(key)) or costs[key] < 0:
+            errors.append(f"implementation.costs.{key} must be finite and nonnegative")
+    fields = ["evaluation_start", "evaluation_end"]
+    if model:
+        fields = ["train_start", "train_end", "valid_start", "valid_end"] + fields
+        if impl.get("backend") not in ("numpy", "qlib"):
+            errors.append("implementation.backend must be numpy or qlib")
+        if not _number(impl.get("ridge_alpha")) or impl["ridge_alpha"] <= 0:
+            errors.append("implementation.ridge_alpha must be positive")
+        if impl.get("features") != ["momentum_12_1", "reversal_1", "volatility_12"]:
+            errors.append("implementation.features must match the three reviewed causal features")
+        if impl.get("label_horizon_periods") != 1:
+            errors.append("Only a one-month forward label is implemented")
+        if not _number(validation.get("gap_periods"), integer=True) or validation["gap_periods"] < 1:
+            errors.append("validation.gap_periods must be >= 1")
+    parsed = {}
+    for key in fields:
+        try:
+            value = date.fromisoformat(validation.get(key))
+            import calendar
+            if value.day != calendar.monthrange(value.year, value.month)[1]:
+                raise ValueError("month-end required")
+            parsed[key] = value
+        except (ValueError, TypeError):
+            errors.append(f"validation.{key} must be an ISO month-end")
+    if len(parsed) == len(fields):
+        ordered = [parsed[key] for key in fields]
+        if any(a > b for a,b in zip(ordered, ordered[1:])):
+            errors.append("Train, validation and evaluation bounds must be chronological and non-overlapping")
+        if model and _number(validation.get("gap_periods"), integer=True):
+            def month(value): return value.year * 12 + value.month
+            for end, start in (("train_end", "valid_start"), ("valid_end", "evaluation_start")):
+                if month(parsed[start]) - month(parsed[end]) <= validation["gap_periods"]:
+                    errors.append("Each split requires the declared number of complete gap months")
+    metric = "mse_improvement" if model else "rank_ic_improvement"
+    if validation.get("metric") != metric:
+        errors.append(f"validation.metric must be {metric}")
+    if validation.get("annualization") != 12:
+        errors.append("validation.annualization must be 12")
+    for key, low, high in (("bootstrap_samples", 100, 100000), ("bootstrap_block_periods", 1, 1200)):
+        if not _number(validation.get(key), integer=True) or not low <= validation[key] <= high:
+            errors.append(f"validation.{key} must be an integer in [{low}, {high}]")
+    if not _number(validation.get("confidence")) or not 0 < validation["confidence"] < 1:
+        errors.append("validation.confidence must be strictly between zero and one")
+    return errors

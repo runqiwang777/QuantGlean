@@ -26,7 +26,8 @@ def _sharpe(values: np.ndarray, annualization: int = 12) -> float | None:
 
 def _summary(rows: pd.DataFrame, multiplier: float = 1.0) -> dict:
     gross = rows["gross_return"].to_numpy(dtype=float)
-    costs = rows[list(_COSTS)].sum(axis=1).to_numpy(dtype=float) * multiplier
+    cost_columns = list(_COSTS) + (["short_borrow_cost"] if "short_borrow_cost" in rows else [])
+    costs = rows[cost_columns].sum(axis=1).to_numpy(dtype=float) * multiplier
     values = gross - costs
     positive_wealth = bool(np.all(values > -1))
     growth = float(np.expm1(np.log1p(values).mean() * 12)) if positive_wealth else None
@@ -50,7 +51,7 @@ def _summary(rows: pd.DataFrame, multiplier: float = 1.0) -> dict:
         "average_gross_leverage": float(rows["gross_leverage"].mean()),
         "maximum_gross_leverage": float(rows["gross_leverage"].max()),
         "positive_compounded_wealth": positive_wealth,
-        "cost_sums": {name: float(rows[name].sum() * multiplier) for name in _COSTS},
+        "cost_sums": {name: float(rows[name].sum() * multiplier) for name in cost_columns},
     }
     result["cost_sums"]["total"] = float(costs.sum())
     return result

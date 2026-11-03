@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quantglean"
-version = "0.2.0"
+version = "0.3.0"
 description = "Evidence-grounded quantitative research notes and reproducible alpha experiments"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,6 +16,7 @@ dependencies = ["numpy>=1.26,<3", "pandas>=2.2,<3", "PyYAML>=6,<7"]
 parquet = ["pyarrow>=17,<24"]
 reports = ["quantstats==0.0.81"]
 dev = ["pytest>=8,<10"]
+qlib = ["pyqlib==0.9.7"]
 
 [project.scripts]
 qg = "quantglean.cli:main"

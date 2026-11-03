@@ -20,7 +20,7 @@
 
 详见[复现指南](docs/reproduction.md)、[可运行案例](examples/reproduction/qg_tf_001/README.md)
 和[来源、依赖及数据权利说明](THIRD_PARTY_NOTICES.md)。
-QuantStats 为可选报告组件；模型／Infra 执行与 Qlib、RD-Agent 接入仍属后续计划。阅读 Skill 可继续独立使用，无需 Python。
+QuantStats 为可选报告组件；横截面动量与固定切分 Ridge 已可运行，并提供可选 Qlib 后端；Infra 和 RD-Agent 执行仍属后续计划。阅读 Skill 可继续独立使用，无需 Python。
 
 
 ## 工作流程
@@ -123,3 +123,6 @@ Skill 会将报告路由到最相关的分析视角：
 
 MIT License。
 
+## 横截面因子与预测模型
+
+[0.3 版指南](docs/panel-experiments.md)新增带 IC／RankIC 和分层诊断的 12-1 月动量因子，以及仅训练段拟合变换、固定时间切分的 Ridge 预测模型；Qlib 为可选且有一致性检查的后端。公开案例仍为合成流程演示。

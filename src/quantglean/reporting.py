@@ -32,7 +32,7 @@ def write_report(run_dir: str | Path) -> Path:
         source = spec.get("source", {})
         lines += ["## Research source and protocol", "",
                   "Source record: " + str(source.get("url", "unavailable")),
-                  "Report SHA256: " + str(source.get("sha256")),
+                  "Source SHA256: " + str(source.get("sha256")),
                   "Evidence IDs: " + ", ".join(source.get("evidence_ids", [])),
                   "Evaluation: " + str(spec.get("validation", {}).get("evaluation_start")) + " to "
                   + str(spec.get("validation", {}).get("evaluation_end")), ""]
@@ -46,10 +46,21 @@ def write_report(run_dir: str | Path) -> Path:
             lines.append("| " + variant + " | " + " | ".join(number(row.get(key)) for key in
                          ("sharpe", "annualized_volatility", "max_drawdown", "average_turnover")) + " |")
         comparison = metrics.get("comparison", {})
-        lines += ["", "Primary comparison (candidate minus fixed baseline): " + str(comparison.get("difference")),
+        lines += ["", "Primary comparison: " + str(metrics.get("primary_test", "candidate minus fixed baseline net Sharpe")) + " = " + str(comparison.get("difference")),
                   "Interval: [" + str(comparison.get("ci_lower")) + ", " + str(comparison.get("ci_upper")) + "]",
                   "Conclusion: " + str(manifest.get("conclusion")), "",
                   "Full metrics below include twice-cost stress with unchanged positions.", ""]
+    if metrics.get("factor_diagnostics"):
+        lines += ["## Cross-sectional signal diagnostics", "",
+                  "IC/RankIC compare each decision's scores with that holding month's subsequently observed returns.",
+                  "Quintile returns in quantiles.csv are gross long-only bucket returns.", "",
+                  "```json", json.dumps(metrics["factor_diagnostics"], indent=2, allow_nan=False), "```", ""]
+    if metrics.get("prediction_metrics"):
+        lines += ["## Forecast evaluation", "",
+                  "Primary metric: baseline training-mean MSE minus candidate MSE, averaged equally across months.",
+                  "Positive values indicate lower forecast error; this is distinct from the portfolio comparison.",
+                  "Portfolio baseline: " + str(metrics.get("portfolio_baseline")), "",
+                  "```json", json.dumps(metrics["prediction_metrics"], indent=2, allow_nan=False), "```", ""]
     if manifest.get("error"):
         lines += ["## Failure / missing information", "", manifest["error"], ""]
     if metrics:
