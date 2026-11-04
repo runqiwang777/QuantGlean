@@ -1,0 +1,10 @@
+{
+  "conclusion": "untested_synthetic",
+  "snapshot_equivalence": true,
+  "availability_boundary": "inclusive",
+  "selection": "latest known event <= event_cutoff, then latest available revision",
+  "withdrawal_policy": "missing without fallback to an older event",
+  "clocks": "event_time <= published_at <= actual available_at <= decision_at for selected records",
+  "financial_alpha_tested": false,
+  "benchmark_correctness_gate": true
+}

@@ -1,0 +1,85 @@
+{
+  "run_id": "20261104T001126Z-b79ba343",
+  "status": "completed",
+  "conclusion": "untested_synthetic",
+  "started_at": "2026-11-04T00:11:26.240703+00:00",
+  "command": [
+    "qg",
+    "run",
+    "local-work\\frozen-infra-v1.json",
+    "--data-manifest",
+    "..\\examples\\reproduction\\qg_infra_001\\data_manifest.json",
+    "--output",
+    "local-work\\runs",
+    "--parquet"
+  ],
+  "code": {
+    "commit": "6233fc75d18e1d2a7858e3b381d40836b012b697",
+    "dirty": false,
+    "source_sha256": {
+      "quantglean/__init__.py": "06b6ba21998412885a2afb8c410bede8bd2ed69b8c4bcbf41bf35585b1c515f1",
+      "quantglean/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "quantglean/catalog.py": "f8f0ae03943297a96402da0a2cc36c95108fc85562630f26a2930459db4da711",
+      "quantglean/cli.py": "e4c6c06dd06a360775ef2a53224e1b0ce9d5ec84ecc1658e07f988689b49ed5d",
+      "quantglean/cross_sectional.py": "2b1c6a3a0eb3e32c74bebf10e9a3579c5b19ffaa2122e6094e40a1a3eccf7366",
+      "quantglean/data.py": "92aab2808f511e1684931cf51501d19f9abfa909e3933bc7a5828c93bf445ff0",
+      "quantglean/engine.py": "b42e59bf15b3f1e589e5aeb4d7aeaa36f7a090f44723fb173c419665f77b7051",
+      "quantglean/infra.py": "2c13e4ff2b4e735953fc6adb36a343896c7f5a4fb919d8dd4ee76df61e8a8b12",
+      "quantglean/models.py": "4c7e1465646fb2feb9891700857c978c5121d87b9678087050296917ee43d9f8",
+      "quantglean/qlib_adapter.py": "20c6eeb86e79dcd3b9c65d3c50af534187fffd9f2075f73a2b140018c525fbae",
+      "quantglean/reporting.py": "cf85925cd2b2a11d5660a325772e3af62946656fe32b61a0c63bda02bb0649b1",
+      "quantglean/runs.py": "3ba443e3a64973cf575452bb2b1991be9f08a7e24c940bdce272d79761c55bb8",
+      "quantglean/specs.py": "fa15104326bad951ba1a7ee2a99a5b13b7d03c69c3ab0422d054a801d2526426"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "packages": {
+      "quantglean": "0.4.0",
+      "numpy": "2.3.5",
+      "pandas": "2.3.3",
+      "PyYAML": "6.0.3",
+      "pyarrow": "23.0.1",
+      "quantstats": "0.0.81",
+      "pyqlib": "0.9.7",
+      "scikit-learn": "1.9.1"
+    }
+  },
+  "artifacts": {
+    "availability_audit.csv": "7e33ba15a439739c1fe1feeb8d889e06674f19027c1d6695adaa68cbe8f6d2ed",
+    "availability_audit.parquet": "51dcbb49d6bb99015bd49ce277adf04bb0a6654a4bc47aa630efa03da36b8db3",
+    "benchmark.csv": "dca417fde695c30ba54e1a354bbf9e2e175b1afd503e832c7c379e74157ca87c",
+    "benchmark.parquet": "5807fc9d8349539299f2fe6510890335d27525e5609dfb36d6fa4da10fa72484",
+    "benchmark_samples.csv": "c33b5bb24d5f7f5a8cb1f77389811e1473e2859e589352b75f8fea75b496a3a4",
+    "benchmark_samples.parquet": "dea9ca955f65c5f83a60eca5a2165e97f22e374757e7ae6fc656e995840cb86f",
+    "checks.json": "59698a3b72cedc7cd69ef56df738cdf3cb74b20fb8610c98fa1e8b1cf06b0e9f",
+    "data_manifest.json": "e10531c255ea3ebb986a7ba486eecbac47dbea6f76c4e9b890151a6a864457e4",
+    "frozen_spec.json": "5ba775d4ed5a60f05fc4b56fdf93fb32339b2b16644334a9959e1b70f011aa2a",
+    "implementation_differences.md": "e551488d860584ce0fe013b052578f7b486233a029886032ff43e3bfa7194cc2",
+    "metrics.json": "cee4487fe37b3b36b81422585222aa4ae393ec816fda6f1bb50ce2ae9c46310c",
+    "reference_snapshots.csv": "39d3e7320a5c4b4721f58fb4393b7d0f2036b04abb1d7c90c751917f35ffb2c6",
+    "reference_snapshots.parquet": "7b7fd33991ca96bf29f854174d41c8162a336d13ea7a0c155bc8b37b27385e6e",
+    "report.html": "0afe200910d01301d0b32510b33d91add998a92d1f39080963f8d5ddd3a42d92",
+    "report.md": "617c63265a14a7092bbc941eba9321bd2671b3d0ca713ae6cd2d79f1105cf157",
+    "run.log": "9238efa5cd8e9f2333dce47a0e9554657b5995249887f8564a0b7bff68336b6d",
+    "snapshots.csv": "39d3e7320a5c4b4721f58fb4393b7d0f2036b04abb1d7c90c751917f35ffb2c6",
+    "snapshots.parquet": "7b7fd33991ca96bf29f854174d41c8162a336d13ea7a0c155bc8b37b27385e6e"
+  },
+  "spec_hash": "df7f6c32721f329d506de1a36fa4cf904dcf5cf2c428ff417efb5c0d761ff79f",
+  "reproduction_level": "pipeline_demo",
+  "seed": 17,
+  "experiment_id": "QG-INFRA-001",
+  "artifact_type": "infra",
+  "analysis_type": "point_in_time",
+  "data_summary": {
+    "events": 1728,
+    "queries": 486,
+    "instruments": 8,
+    "fields": 2
+  },
+  "data_sha256": "873d3a9f74b34787a438cfc33506333adf98652ab748a4454779aa5eeaf5a51c",
+  "data_manifest_sha256": "7b2d8c2ebde62f09d1dbd4f0dabcae97a5f34e0728bc446d2c18e7ae517a3ca5",
+  "finished_at": "2026-11-04T00:11:35.729696+00:00",
+  "report_generated_at": "2026-11-04T00:11:35.729696+00:00"
+}
