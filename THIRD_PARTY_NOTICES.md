@@ -61,3 +61,7 @@ GitHub policies and dependency/source terms can change; review them again when a
 ## Version 0.3 sources
 
 The cross-sectional convention links to [Kenneth R. French's construction notes](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/det_mom_factor.html). We record the inspected page fingerprint and our implementation differences; no source HTML, downloaded market returns or figures are redistributed. The model design note and all panel fixtures are original QuantGlean work. Neither case claims to reproduce the French factor or any external paper's historical performance.
+
+## Version 0.4 infrastructure
+
+Reviewed 2026-11-04. The revision-query implementations, original design note, fictional input log, queries and benchmark UI were authored for QuantGlean. No external dataset or upstream source is bundled. Measurement uses Python's standard timing and allocation-tracing APIs; tracemalloc peaks are not process RSS. Local integrity checks are not digital signatures or proof of source rights. GitHub CI remains bounded synthetic testing with read-only contents permission; Pages publishes the permitted synthetic records. MLflow/DVC services and RD-Agent execution are not started by these features.

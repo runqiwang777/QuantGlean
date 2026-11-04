@@ -53,4 +53,4 @@ An inspected source supports a reading note. A proposed card is a research task.
 ## Experiment links
 
 - **Frozen spec / data manifest / run record:** [paths, fingerprints, status]
-- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.3]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.4]

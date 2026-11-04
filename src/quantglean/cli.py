@@ -17,8 +17,22 @@ def main(argv=None) -> int:
     run = sub.add_parser("run"); run.add_argument("spec"); run.add_argument("--data-manifest")
     run.add_argument("--output", required=True); run.add_argument("--parquet", action="store_true")
     report = sub.add_parser("report"); report.add_argument("run_directory"); report.add_argument("--quantstats", action="store_true")
+    inventory = sub.add_parser("runs"); inventory.add_argument("directory")
+    verify = sub.add_parser("verify"); verify.add_argument("run_directory")
+    compare = sub.add_parser("compare"); compare.add_argument("first"); compare.add_argument("second")
+    compare.add_argument("--metric", required=True)
     args = parser.parse_args(argv)
     try:
+        if args.action in ("runs", "verify", "compare"):
+            from .catalog import list_runs, verify_run, compare_runs
+            if args.action == "runs":
+                result = list_runs(args.directory)
+            elif args.action == "verify":
+                result = verify_run(args.run_directory)
+            else:
+                result = compare_runs(args.first, args.second, args.metric)
+            print(json.dumps(result, indent=2, ensure_ascii=False, allow_nan=False))
+            return 0 if not isinstance(result, dict) or result.get("valid", result.get("comparable", True)) else 1
         if args.action == "validate":
             errors = validate_spec(load_spec(args.spec))
             print(json.dumps({"valid": not errors, "errors": errors}, indent=2))
@@ -43,8 +57,8 @@ def main(argv=None) -> int:
                 "# Implementation task\n\n"
                 f"Artifact type: {spec['artifact_type']}\n\n"
                 "Specify formula, point-in-time data, fixed baseline, split, costs, evidence and tests.\n"
-                "Reviewed runners: time-series trend, cross-sectional momentum, fixed-split ridge.\n"
-                "Other model families and infra execution remain design scaffolds.\n",
+                "Reviewed runners: time-series trend, cross-sectional momentum, fixed-split ridge, point-in-time infra.\n"
+                "Other model/infra families remain design scaffolds.\n",
                 encoding="utf-8")
             print(root)
         elif args.action == "run":
@@ -55,6 +69,8 @@ def main(argv=None) -> int:
             return 0 if manifest["status"] == "completed" else 2
         elif args.action == "report":
             root = Path(args.run_directory)
+            if args.quantstats and not (root / "returns.csv").is_file():
+                raise ValueError("QuantStats requires a return-series run, not an infra benchmark")
             print(write_report(root))
             if args.quantstats:
                 print(quantstats_report(root))

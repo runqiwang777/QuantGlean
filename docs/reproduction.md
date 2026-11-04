@@ -2,7 +2,7 @@
 
 QuantGlean 0.2 adds a local Python workflow alongside the independently usable reading skill.
 The first executable case is QG-TF-001: a monthly time-series trend reference implementation.
-Version 0.3 also runs cross-sectional momentum and a fixed-split ridge model; see the [panel/model guide](panel-experiments.md). Infra execution remains future work.
+Version 0.3 also runs cross-sectional momentum and a fixed-split ridge model; see the [panel/model guide](panel-experiments.md). Version 0.4 adds the [point-in-time infra runner and local run tools](infra.md).
 
 ## Install and run
 

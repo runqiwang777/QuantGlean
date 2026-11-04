@@ -15,6 +15,9 @@ def write_report(run_dir: str | Path) -> Path:
     manifest = json.loads((root / "run_manifest.json").read_text(encoding="utf-8"))
     metrics_path = root / "metrics.json"
     metrics = json.loads(metrics_path.read_text(encoding="utf-8")) if metrics_path.exists() else {}
+    is_infra = manifest.get("artifact_type") == "infra"
+    disclaimer = ("Point-in-time data-query correctness and local performance benchmark. Synthetic fixture only; "
+                  "timings vary by environment and are not investment returns.") if is_infra else DISCLAIMER
     lines = [
         "# QuantGlean reproduction report", "",
         f"- Run: {manifest['run_id']}",
@@ -24,18 +27,29 @@ def write_report(run_dir: str | Path) -> Path:
         f"- Spec SHA256: {manifest.get('spec_hash')}",
         f"- Dataset SHA256: {manifest.get('data_sha256')}",
         f"- Started (UTC): {manifest['started_at']}",
-        f"- Code: {manifest.get('code', {})}", "", DISCLAIMER, "",
+        f"- Code: {manifest.get('code', {})}", "", disclaimer, "",
     ]
     spec_path = root / "frozen_spec.json"
     if spec_path.exists():
         spec = json.loads(spec_path.read_text(encoding="utf-8"))
         source = spec.get("source", {})
+        scope = ("Validation: " + str(spec.get("validation", {}).get("metric"))) if is_infra else (
+            "Evaluation: " + str(spec.get("validation", {}).get("evaluation_start")) + " to " +
+            str(spec.get("validation", {}).get("evaluation_end")))
         lines += ["## Research source and protocol", "",
                   "Source record: " + str(source.get("url", "unavailable")),
                   "Source SHA256: " + str(source.get("sha256")),
                   "Evidence IDs: " + ", ".join(source.get("evidence_ids", [])),
-                  "Evaluation: " + str(spec.get("validation", {}).get("evaluation_start")) + " to "
-                  + str(spec.get("validation", {}).get("evaluation_end")), ""]
+                  scope, ""]
+    if is_infra and metrics.get("benchmark"):
+        lines += ["## Correctness and availability", "",
+                  "```json", json.dumps({"correctness": metrics["correctness"], "availability_audit": metrics["availability_audit"]}, indent=2), "```", "",
+                  "## Measured performance", "", "| Queries | Reference median ms | Indexed median ms | Ratio | Reference Python peak bytes | Indexed Python peak bytes |",
+                  "| ---: | ---: | ---: | ---: | ---: | ---: |"]
+        for profile in metrics["benchmark"]["profiles"]:
+            lines.append("| " + " | ".join(str(profile[k]) for k in ("queries", "reference_median_ms", "indexed_median_ms", "speed_ratio",
+                                                                   "reference_python_peak_bytes", "indexed_python_peak_bytes")) + " |")
+        lines += ["", metrics["benchmark"]["timing_scope"], metrics["benchmark"]["memory_scope"], metrics["benchmark"]["caution"], ""]
     if metrics.get("variants"):
         lines += ["## Measured net excess-return results", "",
                   "| Variant | Net Sharpe | Annual vol | Max drawdown | Mean turnover |",
@@ -64,8 +78,8 @@ def write_report(run_dir: str | Path) -> Path:
     if manifest.get("error"):
         lines += ["## Failure / missing information", "", manifest["error"], ""]
     if metrics:
-        lines += ["## Recorded metrics", "", "Undefined statistics are null. Sharpe uses excess returns and annualization 12.",
-                  "Intervals are exploratory paired moving-block bootstrap estimates; they do not establish causality or remove selection bias.", "",
+        lines += ["## Recorded metrics", "", "Undefined statistics are null." if is_infra else "Undefined statistics are null. Sharpe uses excess returns and annualization 12.",
+                  "Measured timings are descriptive, not inferential speed guarantees." if is_infra else "Intervals are exploratory paired moving-block bootstrap estimates; they do not establish causality or remove selection bias.", "",
                   "```json", json.dumps(metrics, indent=2, ensure_ascii=False, allow_nan=False), "```", ""]
     lines += ["## Audit trail", "", "See frozen_spec.json, data_manifest.json (when available), checks.json, "
               "implementation_differences.md, and artifact SHA256 values in run_manifest.json.",
@@ -84,6 +98,8 @@ def write_report(run_dir: str | Path) -> Path:
 
 def quantstats_report(run_dir: str | Path) -> Path:
     """Optional public API adapter. All inputs are local return series, no tickers."""
+    if not (Path(run_dir) / "returns.csv").is_file():
+        raise ValueError("QuantStats requires a return-series run; it does not apply to infra benchmarks")
     import pandas as pd
     import quantstats as qs
     root = Path(run_dir)

@@ -118,4 +118,4 @@ All synthetic conclusions stay `untested_synthetic`, including the bootstrap com
 A successful run verifies this declared workflow, not a paper's historical performance.
 
 Next gates: permitted audited historical data, dynamic-coverage/delisting contracts, additional model families,
-then infra correctness/performance benchmarks and optional experiment tracking.
+the point-in-time [infra benchmark and local run tools](infra.md) are available in 0.4; external experiment tracking remains optional future work.

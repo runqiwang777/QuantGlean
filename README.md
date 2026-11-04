@@ -21,7 +21,7 @@ It does not verify the AQR paper's historical performance.
 
 See the [reproduction guide](docs/reproduction.md), [runnable example](examples/reproduction/qg_tf_001/README.md),
 and [source/dependency rights notes](THIRD_PARTY_NOTICES.md).
-QuantStats is an optional report adapter. Cross-sectional momentum and fixed-split ridge execution are available, with an optional Qlib backend. Infra and RD-Agent execution remain planned.
+QuantStats is an optional report adapter. Cross-sectional momentum and fixed-split ridge execution are available, with an optional Qlib backend. A point-in-time infra runner is available in 0.4; RD-Agent execution remains planned.
 The reading Skill remains usable without Python.
 
 
@@ -130,3 +130,7 @@ MIT License.
 ## Cross-sectional factors and models
 
 [Version 0.3](docs/panel-experiments.md) adds a 12-1 momentum factor with IC/RankIC and quintiles, and a fixed-split ridge model with train-only transforms and prediction baselines. Qlib is an optional verified backend. Public examples remain synthetic pipeline demos.
+
+## Point-in-time infrastructure and run records
+
+[Version 0.4](docs/infra.md) adds revision-aware data queries with separate event, publication and actual availability times, plus correctness-first performance measurements. Use qg runs, qg verify and qg compare to inspect local attempts and recorded artifacts. The public example is original synthetic data; infra quality is not investment alpha.

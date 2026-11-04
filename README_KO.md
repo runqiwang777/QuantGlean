@@ -21,7 +21,7 @@ AQR 논문의 과거 성과를 재현한 결과가 아닙니다.
 
 [재현 가이드](docs/reproduction.md), [실행 예제](examples/reproduction/qg_tf_001/README.md),
 [출처·의존성·데이터 권리 안내](THIRD_PARTY_NOTICES.md)를 참고하세요.
-QuantStats는 선택적 보고서 구성 요소입니다. 횡단면 모멘텀과 고정 분할 Ridge를 실행할 수 있으며 Qlib 백엔드를 선택할 수 있습니다. Infra와 RD-Agent 실행은 향후 계획입니다.
+QuantStats는 선택적 보고서 구성 요소입니다. 횡단면 모멘텀과 고정 분할 Ridge를 실행할 수 있으며 Qlib 백엔드를 선택할 수 있습니다. 0.4 버전에서 시점 데이터 기반을 실행할 수 있습니다. RD-Agent 실행은 향후 계획입니다.
 읽기 Skill은 Python 없이 계속 사용할 수 있습니다.
 
 
@@ -112,3 +112,7 @@ MIT License.
 ## 횡단면 팩터와 예측 모델
 
 [0.3 버전 가이드](docs/panel-experiments.md)에 IC／RankIC·분위 진단을 갖춘 12-1개월 모멘텀과 학습 기간만의 변환·고정 시간 분할 Ridge 모델을 추가했습니다. Qlib는 일치성 검사가 있는 선택적 백엔드입니다. 공개 예제는 합성 파이프라인 데모입니다.
+
+## 시점 데이터 기반과 실행 기록
+
+[0.4 버전 가이드](docs/infra.md)에 이벤트·공개·실제 가용 시각을 구분하는 수정 데이터 질의와 정확성 우선 성능 측정을 추가했습니다. qg runs／verify／compare로 로컬 실행과 산출물을 확인할 수 있습니다. 공개 입력은 직접 생성한 합성 데이터이며 기반 품질 개선은 투자 Alpha가 아닙니다.

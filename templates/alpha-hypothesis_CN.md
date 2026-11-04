@@ -53,4 +53,4 @@
 ## 实验回链
 
 - **冻结规格／数据清单／实际运行记录:** [paths, fingerprints, status]
-- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.3]
+- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.4]

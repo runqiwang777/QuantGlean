@@ -66,7 +66,8 @@ def execute(spec_path, manifest_path, output, *, parquet=False, command=None) ->
         spec = load_spec(spec_path)
         dump(root / "frozen_spec.json", spec)
         manifest.update(spec_hash=spec.get("spec_hash"), reproduction_level=spec.get("reproduction_level"),
-                        seed=spec.get("execution", {}).get("seed"))
+                        seed=spec.get("execution", {}).get("seed"), experiment_id=spec.get("id"),
+                        artifact_type=spec.get("artifact_type"), analysis_type=spec.get("analysis_type"))
         errors = validate_spec(spec)
         if errors:
             raise ValueError("; ".join(errors))
@@ -86,10 +87,18 @@ def execute(spec_path, manifest_path, output, *, parquet=False, command=None) ->
             return root, manifest
         if spec.get("data", {}).get("manifest_sha256") != digest(data_path):
             raise ValueError("Frozen data.manifest_sha256 must match the full data manifest, including provenance and rights")
-        frame, dataset = load_dataset(data_path)
+        entry = spec["implementation"]["entrypoint"]
+        if entry == "qg_infra_001_reference":
+            from .infra import load_revision_dataset
+            frame, dataset = load_revision_dataset(data_path)
+            manifest["data_summary"] = {"events": len(frame.events), "queries": len(frame.queries),
+                                        "instruments": int(frame.events.instrument.nunique()),
+                                        "fields": int(frame.events.field.nunique())}
+        else:
+            frame, dataset = load_dataset(data_path)
+            manifest["data_summary"] = {"observations": len(frame), "months": int(frame.date.nunique()),
+                                        "instruments": int(frame.instrument.nunique())}
         dump(root / "data_manifest.json", dataset)
-        manifest["data_summary"] = {"observations": len(frame), "months": int(frame.date.nunique()),
-                                    "instruments": int(frame.instrument.nunique())}
         manifest["data_sha256"] = dataset.get("sha256")
         manifest["data_manifest_sha256"] = digest(data_path)
         # A frozen spec must pin its dataset for any actual experiment.
@@ -105,7 +114,10 @@ def execute(spec_path, manifest_path, output, *, parquet=False, command=None) ->
         if not synthetic and not differences:
             raise ValueError("Historical experiments must declare implementation.undocumented_choices")
         entry = spec["implementation"]["entrypoint"]
-        if entry == "qg_cs_001_reference":
+        if entry == "qg_infra_001_reference":
+            from .infra import run_infra
+            result = run_infra(spec, frame)
+        elif entry == "qg_cs_001_reference":
             from .cross_sectional import run_factor
             result = run_factor(spec, frame)
         elif entry == "qg_model_001_reference":
@@ -114,7 +126,8 @@ def execute(spec_path, manifest_path, output, *, parquet=False, command=None) ->
         else:
             result = run_reference(spec, frame)
         for name in ("signals", "positions", "returns", "diagnostics", "quantiles",
-                     "factor_values", "features", "predictions", "prediction_diagnostics"):
+                     "factor_values", "features", "predictions", "prediction_diagnostics", "snapshots",
+                     "reference_snapshots", "availability_audit", "benchmark", "benchmark_samples"):
             if name not in result:
                 continue
             result[name].to_csv(root / (name + ".csv"), index=False, float_format="%.17g")
@@ -128,6 +141,9 @@ def execute(spec_path, manifest_path, output, *, parquet=False, command=None) ->
         text += ("\n\nReference: see experiment ID, source/evidence and implementation choices in the frozen spec.\n"
                  "Synthetic assets or a user-defined modern universe differ from any original historical sample.\n"
                  "Monthly return accounting does not model individual futures contracts, fills, margin, or intramonth trading.\n")
+        if entry == "qg_infra_001_reference":
+            text = "# Implementation differences\n\n" + "\n".join("- " + str(x) for x in differences)
+            text += "\n\nOriginal in-memory data-query benchmark; no investment-return or external historical-data claim.\n"
         (root / "implementation_differences.md").write_text(text, encoding="utf-8")
         (root / "run.log").write_text("Validated frozen specification and dataset; reference runner completed.\n", encoding="utf-8")
         conclusion = result["metrics"].get("conclusion", result["checks"].get("conclusion", "inconclusive"))

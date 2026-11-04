@@ -126,6 +126,8 @@ def validate_spec(spec: dict) -> list[str]:
                 errors.append(f"implementation.costs.{field} must be finite and nonnegative")
     if spec.get("analysis_type") in ("cross_sectional", "predictive"):
         errors.extend(_panel_errors(spec, objects))
+    if spec.get("artifact_type") == "infra" and spec.get("analysis_type") == "point_in_time":
+        errors.extend(_infra_errors(objects))
     choices = implementation.get("undocumented_choices")
     if not isinstance(choices, list) or not choices or any(not isinstance(x, str) or not x.strip() for x in choices):
         errors.append("implementation.undocumented_choices must list the reference implementation's own conventions")
@@ -260,4 +262,31 @@ def _panel_errors(spec: dict, objects: dict) -> list[str]:
             errors.append(f"validation.{key} must be an integer in [{low}, {high}]")
     if not _number(validation.get("confidence")) or not 0 < validation["confidence"] < 1:
         errors.append("validation.confidence must be strictly between zero and one")
+    return errors
+
+
+def _infra_errors(objects):
+    errors = []
+    impl, validation = objects["implementation"], objects["validation"]
+    expected = {"entrypoint": "qg_infra_001_reference", "event_selection": "latest_known_before_cutoff",
+                "revision_selection": "latest_available_then_revision", "withdrawal_policy": "missing_without_fallback",
+                "availability_boundary": "inclusive"}
+    for key, value in expected.items():
+        if impl.get(key) != value:
+            errors.append(f"implementation.{key} must be {value!r}")
+    config = impl.get("benchmark", {})
+    if not isinstance(config, dict):
+        return errors + ["implementation.benchmark must be a mapping"]
+    counts = config.get("query_counts")
+    if (not isinstance(counts, list) or not counts or len(counts) > 5
+            or any(not _number(v, integer=True) or not 1 <= v <= 5000 for v in counts)):
+        errors.append("benchmark.query_counts must contain 1..5 integer workloads in [1,5000]")
+    elif counts != sorted(set(counts)):
+        errors.append("benchmark.query_counts must be strictly increasing")
+    if not _number(config.get("repetitions"), integer=True) or not 2 <= config["repetitions"] <= 10:
+        errors.append("benchmark.repetitions must be in [2,10]")
+    if config.get("memory_measurement") != "tracemalloc_python_peak":
+        errors.append("Only separate Python allocation peaks are implemented")
+    if validation.get("metric") != "snapshot_equivalence":
+        errors.append("validation.metric must be snapshot_equivalence")
     return errors

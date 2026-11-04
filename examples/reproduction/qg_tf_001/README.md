@@ -19,4 +19,4 @@ Do not tune the fixture to obtain an attractive result or market it as investabl
 Regenerate inputs with `python scripts/make-synthetic-fixture.py`; fresh execution creates a new run ID.
 
 Historical data may be supplied locally with explicit provenance and rights. Keep restricted data outside tracked directories.
-Version 0.3 also provides [cross-sectional and model experiments](../../../docs/panel-experiments.md); infra execution remains planned.
+Version 0.3 also provides [cross-sectional and model experiments](../../../docs/panel-experiments.md); a [point-in-time infra runner](../../../docs/infra.md) is available in 0.4.

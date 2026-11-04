@@ -5,3 +5,5 @@
 
 /examples/reproduction/qg_cs_001/sample-run/** -text
 /examples/reproduction/qg_model_001/sample-run/** -text
+
+/examples/reproduction/qg_infra_001/sample-run/** -text

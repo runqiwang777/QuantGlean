@@ -7,7 +7,7 @@ validation and result records. Mature computation engines are optional adapters.
 | --- | --- | --- |
 | 1 | Frozen specs, local data contract, QG-TF-001 time-series reference, cost accounting, reports, synthetic tests | Implemented in 0.2; historical method results await a permitted audited dataset |
 | 2 | Decision-time eligibility, cross-sectional factor and fixed-split model example; optional Qlib adapter | Implemented in 0.3 for complete monthly coverage; historical validation and broader data contracts remain pending |
-| 3 | Data-availability infra component, correctness/performance benchmark, optional MLflow/DVC tracking | Planned |
+| 3 | Data-availability infra component, correctness/performance benchmark, optional MLflow/DVC tracking | PIT runner and file-based run inventory/verification/comparison implemented in 0.4; external tracking deferred until needed |
 | 4 | Optional Linux/WSL RD-Agent adapter with budget, attempt records and protected final test | Planned |
 
 ## Gates before expanding
@@ -25,3 +25,5 @@ The first runner deliberately handles a complete fixed monthly panel and a small
 Changing eligibility within a complete covered universe is supported in 0.3. Arbitrary dynamic coverage, delisting histories, contract-level futures execution, arbitrary generated code and exact original-result matching require separate validated implementations.
 
 See the [panel/model protocol](panel-experiments.md) for current executable scope and limitations.
+
+See the [infra protocol and local run tools](infra.md) for revision semantics, measurements and verification limits.
