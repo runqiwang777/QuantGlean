@@ -28,7 +28,7 @@ def score(source_dir: Path, arms_dir: Path) -> dict:
         official = base["monthly"](lines, factor=True)
         expected.update({(region, date): value[0] for date, value in official.items()})
     out = {"official_observations": len(expected), "official_scope": "current-vintage published regional factor returns", "arms": {}}
-    for arm in ("sol", "luna", "luna_qg", "luna_qg_v2"):
+    for arm in ("sol", "sol_qg", "luna", "luna_qg", "luna_qg_v2"):
         file = arms_dir / arm / "factor.csv"
         rows = []
         malformed = 0

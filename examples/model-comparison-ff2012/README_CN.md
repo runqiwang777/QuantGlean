@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-**本轮结果：** Sol 提交了完整的四地区月度因子序列；Luna 与 Luna＋QuantGlean 都把来源文件其他区段混入了月度数据，提交的序列有重复行。每组只运行一次，因此这次试跑**没有证明 QuantGlean 提高复现质量或 Alpha 质量**。
+**本轮结果：** Sol 与随后探索性运行的 Sol＋QuantGlean 提交了逐月完全相同的四地区因子序列；Luna 与 Luna＋QuantGlean 都把来源文件其他区段混入了月度数据，提交的序列有重复行。每组只运行一次，因此这次试跑**没有证明 QuantGlean 提高复现质量或 Alpha 质量**。
 
 三组收到同一任务：阅读 Fama 与 French 的[《Size, Value, and Momentum in International Stock Returns》](https://www.johnhcochrane.com/s/Fama_French_size_value_momentum_JFE.pdf)，用 [Ken French 官方资料库](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html)的四地区“规模×动量”六组合收益，重建月度赢家减输家因子。第三组另读了仓库的通用 `SKILL.md`。模型只接触四个六组合 ZIP；四个官方 Mom 因子 ZIP 留给独立评分。
 
@@ -26,6 +26,7 @@
 | 组别 | 输出行数 | 不重复的地区×月份 | 重复行 | 日期格式错误行 | 数值结论 |
 |---|---:|---:|---:|---:|---|
 | Sol | 1,724 | 1,724 | 0 | 0 | 有效；相对官方 Mom 平均绝对误差 0.00391 个百分点 |
+| Sol＋QuantGlean（后续探索性运行） | 1,724 | 1,724 | 0 | 0 | 有效；1,724 个数值与 Sol 完全相同；平均绝对误差同为 0.00391 个百分点 |
 | Luna | 6,896 | 1,724 | 5,172 | 0 | 月度序列无效，不计算精度分 |
 | Luna＋QuantGlean | 7,093 | 1,724 | 5,172 | 197 | 月度序列无效，不计算精度分 |
 
@@ -33,11 +34,13 @@
 
 在看过第一次结果后，我给四种语言的 Skill 都补上了“先锁定数据区段、拒绝重复日期键”的要求，并进行了**开发性复跑**。Luna＋QuantGlean 仍输出 6,896 行，重复 5,172 行。由于修改发生在看到结果之后，这一轮不并入原三组公平对照。结果说明单靠文字指令没有可靠执行数据契约，需要程序化区段解析与唯一键检查。
 
-[独立因子核对程序](../../scripts/audit-french-momentum.py)计算来源哈希、重合月份和差异；[模型输出评分程序](../../scripts/score-french-momentum-arms.py)检查三组提交的原始 CSV。将八个官方 ZIP 下载至本地私有目录后，可运行：
+用户随后要求比较 Sol 与 Sol＋QuantGlean。我保留原 Sol 输出，让新的 Sol 运行读取修订后的通用 Skill（SHA-256：`00c7617d3a51622077ba43f26cec559e5155580a9fd6f0f23a20626f7e3421eb`）和相同的四个输入文件。两组 1,724 个地区×月份数值完全相同。由于 Skill 是在第一次结果后修订的，且每组只有一次运行，这只是探索性观察，不能估计稳定的 Skill 增量。
+
+[独立因子核对程序](../../scripts/audit-french-momentum.py)计算来源哈希、重合月份和差异；[模型输出评分程序](../../scripts/score-french-momentum-arms.py)检查五次运行提交的原始 CSV。将八个官方 ZIP 下载至本地私有目录，并把五份输出分别放入 `sol`、`sol_qg`、`luna`、`luna_qg`、`luna_qg_v2` 子目录后，可运行：
 
 ```sh
 python scripts/audit-french-momentum.py 私有数据目录
 python scripts/score-french-momentum-arms.py 私有数据目录 三组输出的父目录
 ```
 
-本轮是一次流程试跑。三组文字回答都意识到公开组合数据不足以重建论文的个股研究；数值任务中 Sol 正确选取了月度区段，而 QuantGlean 没能改善 Luna 的错误。三组均未完成策略扩展回测，**Alpha 质量尚无法比较**；要检验各组提出的流动性或卖空机制，还需要有使用权的点时个股、交易与成本数据。
+本轮是一次流程试跑。最初三组文字回答都意识到公开组合数据不足以重建论文的个股研究；数值任务中 Sol 正确选取了月度区段，而 QuantGlean 没能改善 Luna 的错误。后续 Sol＋QuantGlean 的数值结果与 Sol 相同。所有组别均未完成策略扩展回测，**Alpha 质量尚无法比较**；要检验各组提出的流动性或卖空机制，还需要有使用权的点时个股、交易与成本数据。

@@ -2,7 +2,7 @@
 
 [简体中文](README_CN.md)
 
-**Result (one run per arm):** Sol produced one complete monthly factor series. Luna and Luna + QuantGlean both included duplicate rows from other sections of the source files, so neither produced a valid monthly series. This pilot does **not** show that QuantGlean improved reproduction or alpha quality.
+**Result (one run per arm):** Sol and a later exploratory Sol + QuantGlean run produced identical complete monthly factor series. Luna and Luna + QuantGlean both included duplicate rows from other sections of the source files, so neither produced a valid monthly series. This pilot does **not** show that QuantGlean improved reproduction or alpha quality.
 
 The common task asked Sol, Luna, and Luna + QuantGlean to read Fama and French, [*Size, Value, and Momentum in International Stock Returns*](https://www.johnhcochrane.com/s/Fama_French_size_value_momentum_JFE.pdf), and reconstruct four regional winner-minus-loser monthly factors from the [Ken French Data Library](https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html). The last arm additionally read the repository's generic `SKILL.md`. Each arm had one isolated attempt and could read only the four six-portfolio input ZIPs. The official Mom factor ZIPs were held for scoring.
 
@@ -26,6 +26,7 @@ The expected monthly aggregation is `0.5 × (Small High + Big High − Small Low
 | Arm | Output rows | Distinct region-months | Duplicate rows | Malformed date rows | Numeric result |
 |---|---:|---:|---:|---:|---|
 | Sol | 1,724 | 1,724 | 0 | 0 | Valid; MAE 0.00391 percentage points against official Mom |
+| Sol + QuantGlean (later exploratory run) | 1,724 | 1,724 | 0 | 0 | Valid; identical to Sol on all 1,724 values; MAE 0.00391 percentage points |
 | Luna | 6,896 | 1,724 | 5,172 | 0 | Invalid monthly series; error score withheld |
 | Luna + QuantGlean | 7,093 | 1,724 | 5,172 | 197 | Invalid monthly series; error score withheld |
 
@@ -33,7 +34,9 @@ The two Luna runs both used data outside the single required monthly value-weigh
 
 A subsequent **development rerun**, after adding a generic multi-section parsing and duplicate-key check to the four Skill languages, still produced 6,896 rows and 5,172 duplicates. It is excluded from the original three-arm comparison because the Skill was edited after inspecting the first result. This failure shows that written guidance alone did not enforce the data contract; the deterministic parser and unique-key gate in the audit/scorer remain necessary.
 
-The independent [audit program](../../scripts/audit-french-momentum.py) reads the eight official ZIPs and reports overlap, source hashes, and aggregate discrepancies. The [arm scorer](../../scripts/score-french-momentum-arms.py) checks the original model CSVs against the four official Mom files. To reproduce locally, download the eight official ZIPs into a private directory, put the three arm CSVs in separate `sol`, `luna`, and `luna_qg` subdirectories, and run:
+The user then requested a Sol versus Sol + QuantGlean check. The existing Sol output was retained; a fresh Sol run read the revised generic Skill (SHA-256 `00c7617d3a51622077ba43f26cec559e5155580a9fd6f0f23a20626f7e3421eb`) and the same four permitted portfolio files. It produced exactly the same 1,724 region-month values as Sol without the Skill. Since the Skill revision followed the earlier comparison and each condition has only one run, this is an exploratory paired-case observation, not a stable estimate of a Skill effect.
+
+The independent [audit program](../../scripts/audit-french-momentum.py) reads the eight official ZIPs and reports overlap, source hashes, and aggregate discrepancies. The [arm scorer](../../scripts/score-french-momentum-arms.py) checks submitted model CSVs against the four official Mom files. To reproduce locally, download the eight official ZIPs into a private directory, put the five arm CSVs in separate `sol`, `sol_qg`, `luna`, `luna_qg`, and `luna_qg_v2` subdirectories, and run:
 
 ```sh
 python scripts/audit-french-momentum.py PRIVATE_DATA_DIRECTORY
@@ -42,4 +45,4 @@ python scripts/score-french-momentum-arms.py PRIVATE_DATA_DIRECTORY PRIVATE_ARM_
 
 ## Interpretation
 
-This is a single-draw process check. All three model responses recognized that the current French portfolio files cannot recreate the paper's stock-level study. Sol supplied the correct monthly section in the numeric task; neither Luna run did, and QuantGlean did not repair that failure. No strategy extension was backtested. Alpha quality and stable model/skill effects remain unmeasured. The published portfolio files do not supply the point-in-time security returns, positions, liquidity, shorting events, and executable costs required for those candidates.
+This is a single-draw process check. The three initial model responses recognized that the current French portfolio files cannot recreate the paper's stock-level study. Sol supplied the correct monthly section in the numeric task; neither Luna run did, and QuantGlean did not repair that failure. The later Sol + QuantGlean result matched Sol exactly. No strategy extension was backtested. Alpha quality and stable model/skill effects remain unmeasured. The published portfolio files do not supply the point-in-time security returns, positions, liquidity, shorting events, and executable costs required for those candidates.
