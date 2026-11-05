@@ -79,6 +79,8 @@ For each proposed mechanism, explain its logic, evidence, setting, and failure c
 - [`SKILL_CN.md`](SKILL_CN.md): Simplified Chinese analysis instructions
 - [`README_CN.md`](README_CN.md): Simplified Chinese project overview
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README.md): worked research note, source locators, analyst review, and a filled hypothesis card ([中文](examples/aqr-century-trend-following/README_CN.md))
+- [`examples/aqr-tsmom-2012/`](examples/aqr-tsmom-2012/README.md): real-paper evidence map and reproducible audit of AQR's published original-paper portfolio return series; no source workbook is redistributed
+- [`examples/model-comparison-ff2012/`](examples/model-comparison-ff2012/README.md): one-run Sol / Luna / Luna + QuantGlean comparison on French's published regional momentum portfolios; includes failed outputs and independent scoring ([中文](examples/model-comparison-ff2012/README_CN.md))
 - [`templates/alpha-hypothesis.md`](templates/alpha-hypothesis.md): reusable Alpha Hypothesis Card ([中文](templates/alpha-hypothesis_CN.md))
 
 - [Japanese README](README_JA.md) · [Japanese Skill](SKILL_JA.md)

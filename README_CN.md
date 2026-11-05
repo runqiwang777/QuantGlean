@@ -77,6 +77,8 @@ Skill 会将报告路由到最相关的分析视角：
 - [`SKILL_CN.md`](SKILL_CN.md)：简体中文分析指令
 - [`README_CN.md`](README_CN.md)：简体中文项目说明
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README_CN.md)：完整研究笔记、证据定位、分析点评与已填写的假设卡片（[English](examples/aqr-century-trend-following/README.md)）
+- [`examples/aqr-tsmom-2012/`](examples/aqr-tsmom-2012/README.md)：真实论文证据定位，以及对 AQR 原论文组合收益序列的可复核统计；仓库不分发原始工作簿
+- [`examples/model-comparison-ff2012/`](examples/model-comparison-ff2012/README_CN.md)：Sol / Luna / Luna＋QuantGlean 的单轮官方动量组合复现对照，保留失败输出与独立评分（[English](examples/model-comparison-ff2012/README.md)）
 - [`templates/alpha-hypothesis_CN.md`](templates/alpha-hypothesis_CN.md)：可复用的 Alpha 假设卡片（[English](templates/alpha-hypothesis.md)）
 
 - [日本語 README](README_JA.md) · [日本語 Skill](SKILL_JA.md)

@@ -140,6 +140,7 @@ Reviewed runners now cover time-series trend, cross-sectional momentum and fixed
 Keep pipeline_demo, method_reimplementation and original-result reproduction distinct.
 Synthetic runs always remain untested_synthetic; completion is not evidence of investable alpha.
 Confirm data-use and publication rights before sharing inputs or derived outputs.
+For executable work on a file with multiple tables or frequencies, identify the exact source section and unit before parsing. Reject duplicate or malformed period keys, missing-value sentinels and unexpected row counts before calculating or publishing results; record any source-to-output discrepancy.
 
 [Cross-sectional factors and models](docs/panel-experiments.md)
 
