@@ -12,17 +12,6 @@
 
 它是一套研究 skill 与分析流程，不是交易系统、投资建议，也不承诺投资表现。
 
-## 从假设到复现实验（可选 Python 工作流）
-
-阅读 Skill 现已配套本地实验流程：冻结规格、校验数据清单，运行自行编写的 QG-TF-001 月频趋势参考实现，
-保存信号、仓位、成本、指标与报告。公开案例使用**原创合成数据**，等级与结论始终为
-**pipeline_demo / untested_synthetic（流程演示／尚未检验）**，不代表复现 AQR 论文的历史业绩。
-
-详见[复现指南](docs/reproduction.md)、[可运行案例](examples/reproduction/qg_tf_001/README.md)
-和[来源、依赖及数据权利说明](THIRD_PARTY_NOTICES.md)。
-QuantStats 为可选报告组件；横截面动量与固定切分 Ridge 已可运行，并提供可选 Qlib 后端；0.4 版已提供时点数据 Infra runner；RD-Agent 执行仍属后续计划。阅读 Skill 可继续独立使用，无需 Python。
-
-
 ## 工作流程
 
 1. **阅读报告并识别研究类型。** 不预设所有报告都是因子或策略研究。
@@ -77,8 +66,6 @@ Skill 会将报告路由到最相关的分析视角：
 - [`SKILL_CN.md`](SKILL_CN.md)：简体中文分析指令
 - [`README_CN.md`](README_CN.md)：简体中文项目说明
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README_CN.md)：完整研究笔记、证据定位、分析点评与已填写的假设卡片（[English](examples/aqr-century-trend-following/README.md)）
-- [`examples/aqr-tsmom-2012/`](examples/aqr-tsmom-2012/README.md)：真实论文证据定位，以及对 AQR 原论文组合收益序列的可复核统计；仓库不分发原始工作簿
-- [`examples/model-comparison-ff2012/`](examples/model-comparison-ff2012/README_CN.md)：Sol / Luna / Luna＋QuantGlean 的单轮官方动量组合复现对照，保留失败输出与独立评分（[English](examples/model-comparison-ff2012/README.md)）
 - [`templates/alpha-hypothesis_CN.md`](templates/alpha-hypothesis_CN.md)：可复用的 Alpha 假设卡片（[English](templates/alpha-hypothesis.md)）
 
 - [日本語 README](README_JA.md) · [日本語 Skill](SKILL_JA.md)
@@ -125,10 +112,3 @@ Skill 会将报告路由到最相关的分析视角：
 
 MIT License。
 
-## 横截面因子与预测模型
-
-[0.3 版指南](docs/panel-experiments.md)新增带 IC／RankIC 和分层诊断的 12-1 月动量因子，以及仅训练段拟合变换、固定时间切分的 Ridge 预测模型；Qlib 为可选且有一致性检查的后端。公开案例仍为合成流程演示。
-
-## 时点数据 Infra 与运行记录
-
-[0.4 版指南](docs/infra.md)新增区分事件、发布和实际可用时间的修订数据查询，以及先验证正确性、再测量性能的基准。可用 qg runs、qg verify、qg compare 核对本地尝试和产物。公开数据均为原创合成样例，Infra 质量改善不等于投资 Alpha。

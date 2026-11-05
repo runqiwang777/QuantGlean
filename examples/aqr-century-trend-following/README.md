@@ -117,7 +117,3 @@ The card below narrows the work to one attribution question. It deliberately lea
 **What still limits it:** there is no executable implementation, validated data manifest, or measured result. The missing details are part of the task, not evidence that the method works.
 
 **What to check in another assistant's output:** whether it uses the right PDF version, treats historical stress windows as retrospective, and keeps the filled card's status untested. A fluent answer that invents a Sharpe improvement fails this example.
-
-## Runnable companion
-
-[QG-TF-001 synthetic pipeline](../reproduction/qg_tf_001/README.md) now implements the research-accounting workflow. Its pipeline_demo result does not change the untested historical hypothesis above.

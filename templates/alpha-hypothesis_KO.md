@@ -49,8 +49,3 @@
 - **다음 작업:** [구체적인 행동 하나]
 
 원문 확인은 연구 노트의 근거가 됩니다. 제안 카드는 연구 과제이며 독립적으로 검증된 투자 알파를 의미하지 않습니다. [작성 사례는 영어](../examples/aqr-century-trend-following/README.md)로 볼 수 있습니다.
-
-## 실험 연결
-
-- **고정 사양／데이터 명세／실행 기록:** [paths, fingerprints, status]
-- **Reproduction level:** [pipeline_demo / method_reimplementation / inspired_extension; result_reproduction unsupported in 0.4]

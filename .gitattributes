@@ -1,9 +1,0 @@
-*.py text eol=lf
-/examples/reproduction/** text eol=lf
-*.parquet binary
-/examples/reproduction/qg_tf_001/sample-run/** -text
-
-/examples/reproduction/qg_cs_001/sample-run/** -text
-/examples/reproduction/qg_model_001/sample-run/** -text
-
-/examples/reproduction/qg_infra_001/sample-run/** -text

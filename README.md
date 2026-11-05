@@ -12,19 +12,6 @@
 
 It is a research skill and analysis workflow, not a trading system, an investment recommendation, or a promise of investment performance.
 
-## Reproduce a research hypothesis (optional Python workflow)
-
-The reading skill now has a companion local experiment workflow: freeze a specification, validate a data manifest,
-run the independently written QG-TF-001 monthly trend reference, and save signals, positions, costs, metrics and reports.
-The public example uses **original synthetic data** and is labeled **pipeline_demo / untested_synthetic**.
-It does not verify the AQR paper's historical performance.
-
-See the [reproduction guide](docs/reproduction.md), [runnable example](examples/reproduction/qg_tf_001/README.md),
-and [source/dependency rights notes](THIRD_PARTY_NOTICES.md).
-QuantStats is an optional report adapter. Cross-sectional momentum and fixed-split ridge execution are available, with an optional Qlib backend. A point-in-time infra runner is available in 0.4; RD-Agent execution remains planned.
-The reading Skill remains usable without Python.
-
-
 ## Workflow
 
 1. **Read the report and identify its research type.** Do not assume every report is a factor or strategy paper.
@@ -79,8 +66,6 @@ For each proposed mechanism, explain its logic, evidence, setting, and failure c
 - [`SKILL_CN.md`](SKILL_CN.md): Simplified Chinese analysis instructions
 - [`README_CN.md`](README_CN.md): Simplified Chinese project overview
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README.md): worked research note, source locators, analyst review, and a filled hypothesis card ([中文](examples/aqr-century-trend-following/README_CN.md))
-- [`examples/aqr-tsmom-2012/`](examples/aqr-tsmom-2012/README.md): real-paper evidence map and reproducible audit of AQR's published original-paper portfolio return series; no source workbook is redistributed
-- [`examples/model-comparison-ff2012/`](examples/model-comparison-ff2012/README.md): one-run Sol / Luna / Luna + QuantGlean comparison on French's published regional momentum portfolios; includes failed outputs and independent scoring ([中文](examples/model-comparison-ff2012/README_CN.md))
 - [`templates/alpha-hypothesis.md`](templates/alpha-hypothesis.md): reusable Alpha Hypothesis Card ([中文](templates/alpha-hypothesis_CN.md))
 
 - [Japanese README](README_JA.md) · [Japanese Skill](SKILL_JA.md)
@@ -129,10 +114,3 @@ For research and educational use only. The output is not investment advice and d
 
 MIT License.
 
-## Cross-sectional factors and models
-
-[Version 0.3](docs/panel-experiments.md) adds a 12-1 momentum factor with IC/RankIC and quintiles, and a fixed-split ridge model with train-only transforms and prediction baselines. Qlib is an optional verified backend. Public examples remain synthetic pipeline demos.
-
-## Point-in-time infrastructure and run records
-
-[Version 0.4](docs/infra.md) adds revision-aware data queries with separate event, publication and actual availability times, plus correctness-first performance measurements. Use qg runs, qg verify and qg compare to inspect local attempts and recorded artifacts. The public example is original synthetic data; infra quality is not investment alpha.
