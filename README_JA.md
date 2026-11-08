@@ -95,3 +95,13 @@
 ## ライセンス
 
 MIT License。
+
+## スターの推移
+
+<a href="https://www.star-history.com/?repos=runqiwang777%2FQuantGlean&type=date&legend=top-left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=runqiwang777/QuantGlean&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=runqiwang777/QuantGlean&type=date&legend=top-left" />
+    <img alt="QuantGleanのスター数の推移" src="https://api.star-history.com/chart?repos=runqiwang777/QuantGlean&type=date&legend=top-left" />
+  </picture>
+</a>
