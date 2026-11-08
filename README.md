@@ -114,3 +114,12 @@ For research and educational use only. The output is not investment advice and d
 
 MIT License.
 
+## Star History
+
+<a href="https://www.star-history.com/?repos=runqiwang777%2FQuantGlean&type=date&legend=top-left">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=runqiwang777/QuantGlean&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=runqiwang777/QuantGlean&type=date&legend=top-left" />
+    <img alt="QuantGlean Star History Chart" src="https://api.star-history.com/chart?repos=runqiwang777/QuantGlean&type=date&legend=top-left" />
+  </picture>
+</a>
