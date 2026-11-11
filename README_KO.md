@@ -4,7 +4,9 @@
 
 [English](README.md) · [简体中文](README_CN.md) · [日本語](README_JA.md) · **한국어**
 
-[**온라인 Demo ↗**](https://runqiwang777.github.io/QuantGlean/?lang=ko) — 사례를 살펴보고 근거를 추적하며 Markdown을 내보내는 4개 언어 체험 페이지입니다.
+[**온라인 Demo ↗**](https://runqiwang777.github.io/QuantGlean/?lang=ko) · [검토된 사례 읽기](examples/aqr-century-trend-following/README.md) · [한국어 Skill 열기](SKILL_KO.md)
+
+**입력에서 결과까지:** 보고서 PDF 또는 전문과 Skill을 문서를 읽을 수 있는 AI 어시스턴트에 제공합니다. 출처와 한계를 밝힌 연구 노트를 만들고, 원문이 뒷받침할 때만 후보 알파 가설 카드를 추가합니다.
 
 ![QuantGlean 개요](assets/QuantGlean.png)
 

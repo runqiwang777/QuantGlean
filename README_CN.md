@@ -4,7 +4,9 @@
 
 [English](README.md) · [简体中文](README_CN.md) · [日本語](README_JA.md) · [한국어](README_KO.md)
 
-[**体验在线 Demo ↗**](https://runqiwang777.github.io/QuantGlean/) —— 中英日韩四语交互案例、证据定位与 Markdown 导出，基于已核对的示例内容。
+[**体验在线 Demo ↗**](https://runqiwang777.github.io/QuantGlean/?lang=zh) · [阅读已核对案例](examples/aqr-century-trend-following/README_CN.md) · [打开中文版 Skill](SKILL_CN.md)
+
+**从输入到产出：** 将研报 PDF 或全文连同 Skill 交给能读取文档的 AI 助手，获得标注来源与局限的研究笔记；只有原文支持时，才生成候选 Alpha 假设卡片。
 
 ![QuantGlean 项目示意图](assets/QuantGlean.png)
 

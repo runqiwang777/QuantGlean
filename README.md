@@ -4,7 +4,9 @@
 
 [English](README.md) · [简体中文](README_CN.md) · [日本語](README_JA.md) · [한국어](README_KO.md)
 
-[**Try the interactive demo ↗**](https://runqiwang777.github.io/QuantGlean/) — four-language walkthrough, evidence links, and Markdown export from the reviewed example.
+[**Try the interactive demo ↗**](https://runqiwang777.github.io/QuantGlean/) · [Read the reviewed example](examples/aqr-century-trend-following/README.md) · [Open the skill](SKILL.md)
+
+**From input to output:** Give an AI assistant the report PDF or full text plus the skill. Get a source-linked research note with limitations and, when supported by the report, a candidate Alpha Hypothesis Card.
 
 ![QuantGlean overview](assets/QuantGlean.png)
 

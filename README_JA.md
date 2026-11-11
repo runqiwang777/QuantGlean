@@ -4,7 +4,9 @@
 
 [English](README.md) · [简体中文](README_CN.md) · **日本語** · [한국어](README_KO.md)
 
-[**オンライン Demo ↗**](https://runqiwang777.github.io/QuantGlean/?lang=ja) — ケースを読み、根拠をたどり、Markdown を書き出す四言語の体験版です。
+[**オンライン Demo ↗**](https://runqiwang777.github.io/QuantGlean/?lang=ja) · [確認済みの実例を読む](examples/aqr-century-trend-following/README.md) · [日本語版 Skill を開く](SKILL_JA.md)
+
+**入力から出力まで：** レポートの PDF または全文と Skill を、文書を読める AI アシスタントに渡します。出典と限界を示す研究ノートを作成し、原文に根拠がある場合だけ候補となるアルファ仮説カードを追加します。
 
 ![QuantGlean の概要](assets/QuantGlean.png)
 
