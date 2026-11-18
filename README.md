@@ -67,6 +67,7 @@ For each proposed mechanism, explain its logic, evidence, setting, and failure c
 - [`SKILL.md`](SKILL.md): English analysis instructions
 - [`SKILL_CN.md`](SKILL_CN.md): Simplified Chinese analysis instructions
 - [`README_CN.md`](README_CN.md): Simplified Chinese project overview
+- [`CONTRIBUTING.md`](CONTRIBUTING.md): contributor guide and local demo preview instructions
 - [`examples/aqr-century-trend-following/`](examples/aqr-century-trend-following/README.md): worked research note, source locators, analyst review, and a filled hypothesis card ([中文](examples/aqr-century-trend-following/README_CN.md))
 - [`templates/alpha-hypothesis.md`](templates/alpha-hypothesis.md): reusable Alpha Hypothesis Card ([中文](templates/alpha-hypothesis_CN.md))
 
